@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
     
     this.dataservice.userAuthentication(userName,password).subscribe((data : any)=>{
       localStorage.setItem('userToken',data.access_token);
-      //this.toastr.success('User registration successful');
       this.router.navigate(['welcomepage']);
     },
     (err : HttpErrorResponse)=>{

@@ -4,21 +4,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Layout/header/header.component';
 import { FooterComponent } from './Layout/footer/footer.component';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
-import { MatIconModule, MatMenuModule, MatSelectModule, MatToolbarModule, MatFormFieldModule, 
-  MatInputModule, MatCardModule, MatButtonModule, MatSlideToggleModule, MatTableDataSource,
-   MatTableModule, MatCheckboxModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule,
-    MatDatepicker, 
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSnackBarModule} from '@angular/material';
+import { MatIconModule, MatMenuModule, MatSelectModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatCardModule, MatButtonModule, MatSlideToggleModule, MatTableDataSource, MatTableModule, MatCheckboxModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule, MatDatepicker, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {A11yModule} from '@angular/cdk/a11y';
+import { A11yModule } from '@angular/cdk/a11y';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HRdashboardComponent } from './hrdashboard/hrdashboard.component';
-import{HRDashboardModule} from './hrdashboard/hrdashboard.module';
+import { HRDashboardModule } from './hrdashboard/hrdashboard.module';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { NavbarComponent } from './Layout/navbar/navbar.component';
 import { ModalComponent } from './hrdashboard/modal/modal.component';
@@ -33,10 +27,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { StatusModalComponent } from './project/status-modal/status-modal.component';
 import { ChartComponent } from './chart/chart.component';
 import { FieldErrorDisplayModule } from './field-error-display/field-error-display.module';
+import { AvatarModule } from 'ngx-avatar';
 
-
-
-
+//I keep the new line
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +63,7 @@ import { FieldErrorDisplayModule } from './field-error-display/field-error-displ
     MatCardModule,
     MatButtonModule,
     MatSlideToggleModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     A11yModule,
     BrowserAnimationsModule,
@@ -78,21 +71,21 @@ import { FieldErrorDisplayModule } from './field-error-display/field-error-displ
     MatTableModule,
     HttpClientModule,
     MatCheckboxModule,
-    HttpClientModule,MatDialogModule,
+    HttpClientModule, MatDialogModule,
     MatDatepickerModule, MatNativeDateModule,
     MatFormFieldModule,
-    FieldErrorDisplayModule, 
+    FieldErrorDisplayModule,
     MatSnackBarModule,
-
-
+    AvatarModule
   ],
-  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
-    MatDialogModule,AuthGuard,    {
-      provide : HTTP_INTERCEPTORS,
-      useClass : AuthInterceptor,
-      multi : true
-    }],
+  providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
+    MatDialogModule, AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent,StatusModalComponent]
+  entryComponents: [ModalComponent, StatusModalComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -1,21 +1,25 @@
 <button mat-raised-button color="primary" class="btn1" type="submit" (click)="chart('projectchart')" >View Chart</button>
 <mat-form-field class="filters">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" autocomplete="off">
+    <input matInput (keyup)="applyFilter($event.target.value)" class="material-icons"placeholder="Filter" autocomplete="off">
+
   </mat-form-field>
   <body class="content">
 
   <table mat-table [dataSource]="dataSource" class="example-container mat-elevation-z8">
-  
+    
     <ng-container matColumnDef="name">
         <th mat-header-cell class="tablehead" *matHeaderCellDef> Name </th>
-        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeName}} </td>
+        <td mat-cell class="tablecontent" *matCellDef="let element" > {{element.EmployeeName}} </td>
       </ng-container>
-      
-    <ng-container matColumnDef="EmpId">
-        <th mat-header-cell class="tablehead" *matHeaderCellDef>Employee Id</th>
-        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeId}} </td>
-        </ng-container>
+    
   
+    <ng-container matColumnDef="EmpId" >
+      
+        <th mat-header-cell class="tablehead"  *matHeaderCellDef>Employee Id</th>
+        <td mat-cell class="tablecontent"  *matCellDef="let element">{{element.EmployeeId}} </td>
+      
+        </ng-container>
+    
     <ng-container matColumnDef="stream">
       <th mat-header-cell class="tablehead" *matHeaderCellDef> Stream </th>
       <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StreamName}} </td>
@@ -23,7 +27,7 @@
 
     <ng-container matColumnDef="ProjectName">
         <th mat-header-cell class="tablehead" *matHeaderCellDef> Project </th>
-        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.ProjectName}} </td>
+        <td mat-cell class="tablecontent"  *matCellDef="let element"> {{element.ProjectName}} </td>
       </ng-container>
 
       <ng-container matColumnDef="startdate">
@@ -46,7 +50,11 @@
         <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StatusInfo}} </td>
       </ng-container>
   
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+     
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;let element"
+    [ngClass]="{'make-red':element.EmployeeId === this.result[1].employeeId}"></tr>
+    
   </table>
+
 </body>

@@ -1,7 +1,7 @@
 export class EmployeeProject{
     EmployeeStream_Id : number;
     employeename : string;
-    employeeid : number;
+    employeeid : string;
     streamname : string;
     StatusInfo : string;
     EmployeeMailId : string;

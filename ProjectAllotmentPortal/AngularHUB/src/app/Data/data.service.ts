@@ -53,6 +53,9 @@ export class DataService {
     getEmployeestream(): Observable<EmployeeStream[]> {
       return this.http.get<EmployeeStream[]>(this.Url +'GetEmployeeStream');
     }
+    getColorList(name){
+      return this.http.get(this.Url +'DisplayColor/'+ name);
+    }
     
     statusUpd : object;
     UpdateEmployeeProjStatus(id:number, status:string)

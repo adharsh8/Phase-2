@@ -2,6 +2,7 @@
 using ProjectAllotmentHUB.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Objects;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -47,7 +48,8 @@ namespace ProjectAllotmentHUB.Controllers
             {
                 using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
                 {
-                    var total = (from p in entity.EmployeeProjects.Where(p => name == p.EmployeeStream.Stream.StreamName)
+                    var total = (from p in entity.EmployeeProjects.Where(p => name == p.EmployeeStream.Stream.StreamName
+                                 && p.EmployeeStream.Employee.StatusInfo == "Deployed")
                                  .GroupBy(p => p.Project.ProjectName)
                                  select new
                                  {
@@ -90,7 +92,8 @@ namespace ProjectAllotmentHUB.Controllers
                                        empproj.Project.ProjectName,
                                        empproj.Role.RoleName,
                                        str.StreamName,
-                                       emp.StatusInfo
+                                       emp.StatusInfo,
+                                      
                                    });
                     return Ok(details.ToList());
 
@@ -230,6 +233,34 @@ namespace ProjectAllotmentHUB.Controllers
                 }
             }
             catch (Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
+        [HttpGet]
+        [Route ("api/DisplayColor/{name}")]
+        public IHttpActionResult GetColor(string name)
+        {
+            try
+            {
+                DateTime today = DateTime.Today;
+
+                using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
+                {
+                    var emplist = (from emp in entity.EmployeeProjects
+                                   where (EntityFunctions.DiffDays(emp.EndDate, today)<= 10 && 
+                                   name == emp.EmployeeStream.Stream.StreamName)
+                                   select new
+                                   {
+                                       employeeId = emp.EmployeeStream.Employee.EmployeeId
+                                   }
+                                   ).ToList();
+                    return Ok(emplist);
+                }
+
+            }
+            catch(Exception ex)
             {
                 LogFile.WriteLog(ex);
                 return BadRequest();

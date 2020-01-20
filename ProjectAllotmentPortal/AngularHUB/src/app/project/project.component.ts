@@ -15,7 +15,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ProjectComponent implements OnInit {
   displayedColumns: string[] = ['Employee Id', 'Employee Name', 'EmployeeMailId','StreamName','Status','Action','Add Project'];
   dataSource = new MatTableDataSource<any>();
- //dataSource : EmployeeProject[];
+
   empproj : EmployeeProject = new EmployeeProject();
   allotment : ProjectAllotment = new ProjectAllotment();
   displaystream :any;

@@ -13,8 +13,12 @@ table{
   left: 5%;
   position: relative;
   font-size: 15px;
-  width: 90%;
-
+  width: 20%;
+  font-weight: bold;
+ 
+}
+.make-red{
+  background-color: lightcoral;
 }
 .btn1
 {

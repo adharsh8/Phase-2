@@ -12,7 +12,8 @@ table{
   left: 5%;
   position: relative;
   font-size: 15px;
-  width: 90%;
+  width: 20%;
+  font-weight: bold;
 }
 .btn1
 {
@@ -38,3 +39,4 @@ table{
     color: black;
     text-align: justify;
   }
+
