@@ -1,0 +1,32 @@
+#container
+{
+    width: 70%;
+    margin-left: 12em;
+    position: relative;
+    top: 7em;
+    
+}
+body
+{
+    background-image: url(../../assets/bg7.jpg);
+    height: 100vh;
+    background-repeat: no-repeat;
+    
+    overflow: hidden;
+    position: relative;
+}
+.head
+{
+    text-align: center;
+    font-weight: bold;
+}
+.btn-large
+{
+    margin-left: 10em;
+}
+#image
+{
+    position: relative;
+    height: 100%;
+    width: 130%;
+}

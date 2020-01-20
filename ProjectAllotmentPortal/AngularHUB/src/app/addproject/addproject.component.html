@@ -1,0 +1,77 @@
+<body>
+<mat-card class="project-card" id="block">
+    <i class="material-icons" id="goback" (click)="back()">
+        arrow_back
+        </i>
+    <mat-card-header>
+        <h4 class="header">PROJECT ALLOCATION</h4>
+  </mat-card-header>
+<div class = "project-container" >
+    <form [formGroup]="ProjectForm" autocomplete="off">
+        <mat-card-content>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td>
+                            <mat-form-field class="project" >       
+                         <mat-select required formControlName="ProjectName" [ngClass]="displayFieldCss('ProjectName')" >
+                              <mat-option  *ngFor="let Proj of ProjTypelist" [value]="Proj">{{ Proj.key }}</mat-option>
+                         </mat-select>
+                         <mat-label >PROJECT NAME</mat-label>
+                       </mat-form-field>
+                       <app-field-error-display [displayError]="isFieldValid('ProjectName')"  errorMsg="Please choose the Project Name">
+                    </app-field-error-display>
+                        </td>
+
+                        <td>
+                            <mat-form-field class="roles">
+                         <mat-select required formControlName="Roletype" [ngClass]="displayFieldCss('Roletype')">
+                              <mat-option *ngFor="let role of RolesTypeList" [value]="role">{{ role.key }}</mat-option>
+                         </mat-select>
+                         <mat-label>ROLE TYPE</mat-label>      
+                       </mat-form-field>
+                       <app-field-error-display [displayError]="isFieldValid('Roletype')"  errorMsg="Please choose the Role Type">
+                    </app-field-error-display>
+                        </td>
+                      
+                    </tr><br>
+                    <tr>
+                        <th scope="row"></th>
+                        <td class="fromdate">
+                            <mat-label class="name"></mat-label> 
+                            
+                              <mat-form-field  class="fromDate" >
+                                     <input matInput [matDatepicker]="picker1" placeholder="From Date"  formControlName="fromDate" [ngClass]="displayFieldCss('fromDate')">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                              </mat-form-field>
+                              <app-field-error-display [displayError]="isFieldValidFromDate('fromDate')"  errorMsg="{{errorMsgFromDate}}">
+                            </app-field-error-display>
+                              
+                        </td>
+                        <td class="todate">
+                            <mat-label class="name"></mat-label> 
+                           
+                            
+                            <mat-form-field  class="toDate">
+                                   <input matInput [matDatepicker]="picker2" placeholder="To Date"  formControlName="toDate" [ngClass]="displayFieldCss('toDate')">
+                                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker2></mat-datepicker>
+                            </mat-form-field>
+                            <app-field-error-display [displayError]="isFieldValidToDate('toDate')"  errorMsg="{{errorMsgToDate}}">
+                            </app-field-error-display>
+                            
+                      </td>
+                      </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+        <mat-card-actions>
+            <button [disabled]="!ProjectForm.valid" mat-raised-button color="primary" class="btn1" type="submit" (click)="onSubmit()" >Submit</button>
+            <button  mat-raised-button color="warn" class="btn2" (click)="reset()" type="reset">Clear</button>
+         </mat-card-actions>
+    </form>
+</div>
+</mat-card>
+</body>

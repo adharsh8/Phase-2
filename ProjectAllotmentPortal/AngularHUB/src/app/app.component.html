@@ -1,0 +1,9 @@
+<app-header *ngIf="router.url != '/login'" ></app-header>
+<app-navbar *ngIf="router.url != '/login'"></app-navbar>
+
+<div>
+
+    <router-outlet></router-outlet>
+    
+</div>
+<!--<app-footer *ngIf="router.url != '/login'" fxLayout="column"></app-footer>-->

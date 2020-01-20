@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<body class="content">
+<div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      
+      <ng-container matColumnDef="Employee Name">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Employee Name  </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeName}} </td>
+      </ng-container>
+  
+    
+      <ng-container matColumnDef="Employee Id">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Employee Id </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeId}} </td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="StreamName">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Stream </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StreamName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Status">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Status </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StatusInfo}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="EmployeeMailId">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> E-Mail Id </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeMailId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef>Action</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          <a class="btn-floating btn-large cyan pulse" (click)="openDialog('Update',element)">
+            <i class="tiny material-icons">edit</i></a>
+        </td>
+     
+      </ng-container>
+
+      <ng-container matColumnDef="Add Project">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Allocate </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          <button mat-button [disabled]="element.StatusInfo == 'Waiting for Allocation'"
+          (click)="OnSumbit(element)" mat-raised-button color="primary">ADD PROJECT</button>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</body>
+
+<!--<mat-icon matSuffix>mode_edit</mat-icon>
+          <a (click)="openDialog('Update',element)">Edit</a>-->

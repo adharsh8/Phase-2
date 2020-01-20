@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<body class="content">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+     <!-- Employee Id -->
+     <ng-container matColumnDef="EMPLOYEEID">
+        <th mat-header-cell *matHeaderCellDef class="tablehead"> Employee ID </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeId}} </td>
+      </ng-container>
+
+    <!-- Employee Name -->
+    <ng-container matColumnDef="EMPLOYEENAME">
+      <th mat-header-cell *matHeaderCellDef class="tablehead"> Employee Name </th>
+      <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeName}} </td>
+    </ng-container>
+  
+    <!-- EmployeePhno-->
+    <ng-container matColumnDef="EMPLOYEEPHNO">
+      <th mat-header-cell *matHeaderCellDef class="tablehead"> Employee Phno </th>
+      <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeePhno}} </td>
+    </ng-container>
+  
+    <!-- Mail-Id -->
+    <ng-container matColumnDef="EMPLOYEEMAILID">
+      <th mat-header-cell *matHeaderCellDef class="tablehead"> E-Mail Id </th>
+      <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeMailId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="DOJ">
+        <th mat-header-cell *matHeaderCellDef class="tablehead"> Date of Joining </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.DOJ | date:'mediumDate'}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="INITIATE">
+        <th mat-header-cell *matHeaderCellDef class="tablehead"> Allocation </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+          <button mat-button matTooltip="Info about the action" aria-label="Button that displays a tooltip when focused or hovered over"
+           (click)="openDialog('Add',element)" mat-raised-button color="primary">Allocate</button>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+ 
+</body>
+  <!--<button mat-raised-button color="warn">CANCEL</button>
+  <button mat-button (click)="openDialog('Add',{})" mat-raised-button color="primary">Submit</button>-->
+
+
+  
+

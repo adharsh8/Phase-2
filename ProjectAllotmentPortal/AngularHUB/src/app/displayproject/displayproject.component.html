@@ -1,0 +1,52 @@
+<button mat-raised-button color="primary" class="btn1" type="submit" (click)="chart('projectchart')" >View Chart</button>
+<mat-form-field class="filters">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" autocomplete="off">
+  </mat-form-field>
+  <body class="content">
+
+  <table mat-table [dataSource]="dataSource" class="example-container mat-elevation-z8">
+  
+    <ng-container matColumnDef="name">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Name </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeName}} </td>
+      </ng-container>
+      
+    <ng-container matColumnDef="EmpId">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef>Employee Id</th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EmployeeId}} </td>
+        </ng-container>
+  
+    <ng-container matColumnDef="stream">
+      <th mat-header-cell class="tablehead" *matHeaderCellDef> Stream </th>
+      <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StreamName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ProjectName">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Project </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.ProjectName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="startdate">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Start Date </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StartDate|date:'mediumDate'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="enddate">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> End Date </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.EndDate | date:'mediumDate'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Role Type </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.RoleName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Status </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StatusInfo}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</body>

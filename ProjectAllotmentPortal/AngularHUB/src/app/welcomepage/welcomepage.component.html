@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<div class="row" *ngIf ="userClaims">
+  
+    <div class="col s12 m7">
+      <div class="card">
+        <br>
+        <div><h5 class="name">Hello {{userClaims.COEname}} </h5></div>
+        <div class="card-content">
+          <div class='row' [ngSwitch]="userClaims.COEname">  
+            <div *ngSwitchCase="'Srivatsan'"><img class="personimage" src="../../assets/Srivathsan-Santhanam.jpg" >
+            </div>  
+            <div *ngSwitchCase="'Srinithi'"><img class="personimage" src="../../assets/srinidhi.jpg" >
+            </div>  
+            <div *ngSwitchDefault><img class="personimage" src="../../assets/avatarfemalenew.jpg" ></div>  
+        </div>  
+        <!--  <div *ngIf ="userClaims.COEname === 'Srivatsan'">
+        <img class="personimage" src="../../assets/Srivathsan-Santhanam.jpg" >
+        </div>
+        <div *ngif= "userClaims.COEname ==='Srinithi'">
+          <img class="personimage" src="../../assets/srinidhi.jpg" >
+        </div>
+        <ng-template #other_image >
+          <img class="personimage" src ="../../assets/srinidhi.jpg">
+        </ng-template>-->
+          <h6>Username:{{userClaims.Username}}</h6>
+          <h6>Mail ID: {{userClaims.COEmailId}}</h6>
+          <h6>Department: {{userClaims.StreamName}}</h6>
+        
+        </div>
+      </div>
+    </div>
+  </div>

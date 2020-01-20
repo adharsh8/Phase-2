@@ -1,0 +1,57 @@
+
+
+<button mat-raised-button color="primary" class="btn1" [matMenuTriggerFor]="beforeMenu">View Chart</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item (click)="chart('streamChart')" >STREAM</button>
+  <button mat-menu-item (click)="chart('statusChart')">STATUS</button>
+</mat-menu>
+<mat-form-field class="filters">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" autocomplete="off">
+</mat-form-field>
+
+<body>
+<div >
+  <table class="example-container mat-elevation-z8" mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="employeename">
+      <th mat-header-cell class="tablehead" *matHeaderCellDef> Employee Name </th>
+      <td mat-cell class="tablecontent"  *matCellDef="let element"> {{element.EmployeeName}} </td>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="employeeid">
+      <th mat-header-cell class="tablehead" *matHeaderCellDef> Employee ID </th>
+      <td mat-cell class="tablecontent"  *matCellDef="let element"> {{element.EmployeeId}} </td>
+    </ng-container>
+
+   
+    <ng-container matColumnDef="streamname">
+      <th mat-header-cell class="tablehead" *matHeaderCellDef> Stream </th>
+      <td mat-cell class="tablecontent"  *matCellDef="let element"> {{element.StreamName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="MailId">
+      <th mat-header-cell class="tablehead" *matHeaderCellDef> Email Id </th>
+      <td mat-cell class="tablecontent"  *matCellDef="let element"> {{element.EmployeeMailId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Phno">
+      <th mat-header-cell class="tablehead" *matHeaderCellDef> Phone Number</th>
+      <td mat-cell class="tablecontent"  *matCellDef="let element"> {{element.EmployeePhno}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="DOJ">
+      <th mat-header-cell class="tablehead" *matHeaderCellDef> Date of Joining</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.DOJ | date:'mediumDate'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell class="tablehead" *matHeaderCellDef>Status</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StatusInfo}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+</body>

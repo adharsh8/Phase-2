@@ -1,0 +1,60 @@
+.project-container
+{
+    position: relative;
+    text-align: center;
+    
+}
+#goback
+{
+    cursor: pointer;
+}
+
+#block
+{
+    
+    position: relative;
+    width: 60%;
+    left: 16em;
+    top: 4em;
+    background-color:#eceff1 ;
+   /* border: 3px solid black;*/
+    box-shadow: 5px 20px 50px grey;
+    
+}
+.header
+{
+    left: 10em;
+    font-size: 25px;
+    position: relative;
+    font-weight: bold;
+    bottom: 1em;
+}
+.table
+{
+    position: relative;   
+}
+.btn1
+{
+    right: 1.5em;
+}
+.btn2
+{
+    left: 1.5em;
+}
+.project
+{
+    left: 11em;
+    
+}
+.roles
+{
+    left: 17em;
+}
+.fromDate
+{
+    left: 11em;
+}
+.toDate
+{
+    left: 17em;
+}

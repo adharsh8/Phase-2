@@ -1,0 +1,22 @@
+<body>
+<h1 mat-dialog-title>Choose a Stream</h1>
+
+<form [formGroup]="streamform">
+<div >  
+  <mat-form-field class="content" >
+    <mat-select required formControlName="streamid" >
+         <mat-option *ngFor="let strm of streamTypelist" [value]="strm">{{ strm.key }}</mat-option>
+    </mat-select>
+    <mat-label class="label">STREAM NAME</mat-label>
+    
+  </mat-form-field>
+  <br>
+    <div  mat-dialog-actions>
+      <button class="button1" mat-raised-button color="primary"  (click)="OnSumbit()" >Ok</button>
+      <button class="button2" mat-raised-button color="warn"(click)="onNoClick()">Close</button>
+      
+    </div>
+ 
+</div>
+</form>
+</body>

@@ -1,0 +1,25 @@
+.logo
+{
+    height: 6vh;
+    position: relative;
+    
+}
+#icons1
+{
+    padding: 0.8em;
+    position: relative;
+    cursor: pointer;
+}
+#header
+{
+    font-size: 27px;
+   
+}
+#icons2
+{
+    cursor: pointer;
+}
+#icons1:hover,#icons2:hover{
+    transform: scale(1.15);
+}
+

@@ -1,0 +1,20 @@
+<body>
+<h1 mat-dialog-title>SELECT A STATUS</h1>
+
+<form [formGroup]="statusform">
+<div mat-dialog-content>
+  <mat-form-field class="content">
+    <mat-select required formControlName="statusid">
+      <mat-option *ngFor="let strm of StatusList" [value]="strm">{{ strm.key }}</mat-option>
+ </mat-select >
+ <mat-label class="label">STATUS</mat-label>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button class="button1" mat-button (click)="doAction()" mat-raised-button color="primary">{{action}}</button>
+  <button class="button2" mat-button (click)="closeDialog()" mat-raised-button color="warn">Cancel</button>
+</div>
+</form>
+</body>
+

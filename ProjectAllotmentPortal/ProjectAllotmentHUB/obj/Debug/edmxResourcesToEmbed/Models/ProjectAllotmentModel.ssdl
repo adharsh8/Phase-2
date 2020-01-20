@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectAllocationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Employee_Id" />
+    </Key>
+    <Property Name="Employee_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmployeeId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmployeePhno" Type="bigint" Nullable="false" />
+    <Property Name="EmployeeMailId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DOJ" Type="date" Nullable="false" />
+    <Property Name="StatusInfo" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="EmployeeProject">
+    <Key>
+      <PropertyRef Name="EmployeeProject_Id" />
+    </Key>
+    <Property Name="EmployeeProject_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="Roles_Id" Type="int" Nullable="false" />
+    <Property Name="EmployeeStream_Id" Type="int" Nullable="false" />
+    <Property Name="Project_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeStatus">
+    <Key>
+      <PropertyRef Name="EmployeeStatus_Id" />
+    </Key>
+    <Property Name="EmployeeStatus_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmployeeProject_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeStream">
+    <Key>
+      <PropertyRef Name="EmployeeStream_Id" />
+    </Key>
+    <Property Name="EmployeeStream_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+    <Property Name="Stream_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Project_Id" />
+    </Key>
+    <Property Name="Project_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProjectEndDate" Type="date" />
+    <Property Name="StreamName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Roles_Id" />
+    </Key>
+    <Property Name="Roles_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stream">
+    <Key>
+      <PropertyRef Name="Stream_Id" />
+    </Key>
+    <Property Name="Stream_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COEname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="COEmailId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StreamName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="EmployeeProject_EmployeeStream">
+    <End Role="EmployeeStream" Type="Self.EmployeeStream" Multiplicity="1" />
+    <End Role="EmployeeProject" Type="Self.EmployeeProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeStream">
+        <PropertyRef Name="EmployeeStream_Id" />
+      </Principal>
+      <Dependent Role="EmployeeProject">
+        <PropertyRef Name="EmployeeStream_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeProject_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="EmployeeProject" Type="Self.EmployeeProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Project_Id" />
+      </Principal>
+      <Dependent Role="EmployeeProject">
+        <PropertyRef Name="Project_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeProject_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="EmployeeProject" Type="Self.EmployeeProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Roles_Id" />
+      </Principal>
+      <Dependent Role="EmployeeProject">
+        <PropertyRef Name="Roles_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeStatus_EmployeeProject">
+    <End Role="EmployeeProject" Type="Self.EmployeeProject" Multiplicity="1" />
+    <End Role="EmployeeStatus" Type="Self.EmployeeStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeProject">
+        <PropertyRef Name="EmployeeProject_Id" />
+      </Principal>
+      <Dependent Role="EmployeeStatus">
+        <PropertyRef Name="EmployeeProject_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectAllocationDBModelStoreContainer">
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeProject" EntityType="Self.EmployeeProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeStatus" EntityType="Self.EmployeeStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeStream" EntityType="Self.EmployeeStream" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stream" EntityType="Self.Stream" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="EmployeeProject_EmployeeStream" Association="Self.EmployeeProject_EmployeeStream">
+      <End Role="EmployeeStream" EntitySet="EmployeeStream" />
+      <End Role="EmployeeProject" EntitySet="EmployeeProject" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeProject_Project" Association="Self.EmployeeProject_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="EmployeeProject" EntitySet="EmployeeProject" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeProject_Roles" Association="Self.EmployeeProject_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="EmployeeProject" EntitySet="EmployeeProject" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeStatus_EmployeeProject" Association="Self.EmployeeStatus_EmployeeProject">
+      <End Role="EmployeeProject" EntitySet="EmployeeProject" />
+      <End Role="EmployeeStatus" EntitySet="EmployeeStatus" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

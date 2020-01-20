@@ -1,0 +1,40 @@
+table{
+  position: relative;
+  box-shadow: 10px 10px 5px grey;
+  width: 90%;
+  left: 5%;
+  top:3em;
+  
+}
+.filters
+{
+  top: 4em;
+  left: 5%;
+  position: relative;
+  font-size: 15px;
+  width: 90%;
+}
+.btn1
+{
+  float: right;
+  top: 1em;
+  right: 5em;
+}
+  .tablehead{
+    font-weight: bolder;
+    font-size: 17px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    position: relative;
+    color: black;
+  }
+  .tablecontent
+  {
+    position: relative;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font: bold;
+    font-size: 15px;
+    color: black;
+    text-align: justify;
+  }

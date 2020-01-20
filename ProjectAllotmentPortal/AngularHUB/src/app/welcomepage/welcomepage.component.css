@@ -1,0 +1,31 @@
+.row
+{
+    position: relative;
+    width: 60%;
+    left: 12em;
+    top:3em;
+    
+}
+.card
+{
+    box-shadow: 10px 10px 5px grey;
+    text-align: center;
+    position: relative;
+    background-color:rgba(218, 214, 214, 0.822);
+}
+.personimage
+{
+    position: relative;
+    height: 80%;
+    width: 65%;
+    right: 12em;
+    bottom: 3em;
+}
+.name{
+    font-weight: bold;
+    font-size: 22px;
+}
+h6{
+    font-weight: bold;
+    font-size: 18px;
+}
