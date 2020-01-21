@@ -47,13 +47,22 @@
 
       <ng-container matColumnDef="status">
         <th mat-header-cell class="tablehead" *matHeaderCellDef> Status </th>
-        <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StatusInfo}} </td>
+        <td mat-cell class="tablecontent" *matCellDef="let element">
+        <div *ngIf="element.StatusInfo == 'Reallocate';else otherStatus"> 
+        <a class="hRef" 
+          (click)="ExtendProject(element)">Retain</a>
+      </div>
+        <ng-template #otherStatus>
+          {{element.StatusInfo}} 
+        
+        </ng-template>
+      </td>
       </ng-container>
-  
+      
     <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
      
     <tr mat-row *matRowDef="let row; columns: displayedColumns;let element"
-    [ngClass]="{'make-red':element.EmployeeId === this.result[1].employeeId}"></tr>
+    [ngClass]="{'make-red':element.StatusInfo == 'Reallocate'}"></tr>
     
   </table>
 

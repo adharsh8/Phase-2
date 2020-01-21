@@ -6,6 +6,7 @@ import { Employee } from './employee';
 import { ProjectAllotment } from './ProjectAllotment';
 import { DisplayProject, EmployeeProject } from './EmployeeProject';
 import { EmployeeStream } from './employeestream';
+import { project } from './project';
 
 @Injectable({
   providedIn: 'root'
@@ -53,8 +54,17 @@ export class DataService {
     getEmployeestream(): Observable<EmployeeStream[]> {
       return this.http.get<EmployeeStream[]>(this.Url +'GetEmployeeStream');
     }
-    getColorList(name){
-      return this.http.get(this.Url +'DisplayColor/'+ name);
+    getColorList(name): Observable<EmployeeProject[]>{
+      return this.http.get<EmployeeProject[]>(this.Url +'DisplayColor/'+ name);
+    }
+    getSingleEmployee(Id): Observable<project[]>{
+      return this.http.get<project[]>(this.Url +'GetparticularEmployee/'+Id);
+    }
+    GetProjectName(name): Observable<string[]>{
+      return this.http.get<string[]>(this.Url + 'GetProjectdetails/'+ name);
+    }
+    GetRoleType():Observable<string[]>{
+      return this.http.get<string[]>(this.Url+ 'GetRolesdetails');
     }
     
     statusUpd : object;
@@ -91,6 +101,13 @@ export class DataService {
     {
       return this.http.get(this.Url + 'GetStatusChart')
       .map(result => result);
+    }
+    ChangeEndDate(id:number,enddate : Date)
+    {
+
+      const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+      
+      return this.http.put(this.Url + 'UpdateEndDate/'+id ,enddate, httpOptions); 
     }
     message : any;
     sendmessage(message)

@@ -14,8 +14,8 @@ import { MatInputModule, MatCardModule, MatButtonModule, MatSlideToggleModule, M
   MatSidenavModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
-import { IgxAvatarModule } from 'igniteui-angular';
-import { AvatarModule } from "ngx-avatar";
+//import { IgxAvatarModule } from 'igniteui-angular';
+//import { AvatarModule } from "ngx-avatar";
 
 
 
@@ -36,8 +36,9 @@ import { AvatarModule } from "ngx-avatar";
         MatSlideToggleModule,
         FormsModule, 
         ReactiveFormsModule,
-        IgxAvatarModule,
-        AvatarModule
+        //IgxAvatarModule,
+        //AvatarModule
+        
     ],
     exports: [ 
       HeaderComponent,

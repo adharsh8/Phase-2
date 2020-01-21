@@ -23,11 +23,11 @@
 }
 .header
 {
-    left: 10em;
+    left: 9em;
     font-size: 25px;
     position: relative;
     font-weight: bold;
-    bottom: 1em;
+    bottom: 2em;
 }
 .table
 {
@@ -57,4 +57,27 @@
 .toDate
 {
     left: 17em;
+}
+.proj2
+{
+    font-size: 18px;
+    left: 6em;
+    position: relative;
+}
+.role2
+{
+    font-size: 18px;
+    left: 13em;
+    position: relative;
+}
+.fromdate2
+{
+    font-size: 18px;
+    left: 6em;
+    position: relative;
+}
+.btns1,.btns2
+{
+    position: relative;
+    left: 22em;
 }

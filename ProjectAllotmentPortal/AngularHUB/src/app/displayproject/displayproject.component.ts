@@ -10,18 +10,19 @@ import { EmployeeProject } from '../Data/EmployeeProject';
   selector: 'app-displayproject',
   templateUrl: './displayproject.component.html',
   styleUrls: ['./displayproject.component.css'],
-  providers: [DatePipe]
+  
 })
 export class DisplayprojectComponent implements OnInit {
 
-  constructor(private display : DataService, private router : Router,public dialog: MatDialog,
-    private datePipe: DatePipe) { }
+  constructor(private display : DataService, private router : Router,public dialog: MatDialog) { }
   displayedColumns: string[] = [ 'name', 'EmpId','stream', 'ProjectName','startdate','enddate','role','status'];
   dataSource = new MatTableDataSource();
   streamName : any;
-  
+  Id : number;
+  status : string;
   color: EmployeeProject = new EmployeeProject();
   result : any;
+  final : string;
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -36,12 +37,23 @@ export class DisplayprojectComponent implements OnInit {
         this.display.getColorList(this.streamName).subscribe(
         colorlist =>{
           this.result = colorlist;
-          console.log(this.result[1].employeeId);
-        
-        
-          //console.log(colorlist);
-          //this.result = colorlist;
-         // console.log(this.result);
+          console.log(colorlist);
+          
+          colorlist.forEach(element => {
+            console.log(element);
+            
+            if(element.StatusInfo == "Deployed")
+            {
+              this.Id= element.EmployeeStream_Id;
+              console.log(this.Id);
+              element.StatusInfo = "Reallocate";
+              this.status = element.StatusInfo;
+              this.display.UpdateEmployeeProjStatus(this.Id,this.status).subscribe();
+             
+            }
+            this.final = element.StatusInfo;
+            console.log(this.final);
+          });
         })
        } ,err=>{  
           console.log(err);  
@@ -61,5 +73,11 @@ dialogRef.afterClosed().subscribe(result => {
   console.log("Modal closed");
  });
 
+}
+ExtendProject(value)
+{
+  localStorage.setItem('Project-Id',value.EmployeeStream_Id);
+  localStorage.setItem('Project-status',value.StatusInfo);
+  this.router.navigate(['add-project']);
 }
 }

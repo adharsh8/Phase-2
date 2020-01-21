@@ -12,20 +12,20 @@ namespace ProjectAllotmentHUB.Controllers
     public class ProjectController : ApiController
     {
         [HttpGet]
-        [Route("api/GetProjectdetails")]
-        public IHttpActionResult Get()                 //Get All Project Details
+        [Route("api/GetProjectdetails/{name}")]
+        public IHttpActionResult Get(string name)                 //Get All Project Details
         {
             try
             {
                 using (ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
                 {
-                    var listofProjects = entity.Projects.Select(e => new
-                    {
-                        project_Id = e.Project_Id,
-                        projectname = e.ProjectName,
-                        projectenddate = e.ProjectEndDate,
-                        streamname = e.StreamName
-                    });
+                    var listofProjects = entity.Projects.Where(e => e.StreamName == name).Select(e =>
+                     new
+                     {
+                         projectId = e.Project_Id,
+                         projectname = e.ProjectName,
+                     });
+
                     return Ok(listofProjects.ToList());
                 }
             }

@@ -27,6 +27,10 @@ table{
   right: 5em;
   
 }
+.hRef
+{
+  cursor: pointer;
+}
 .btn1:hover{
   transform: scale(1.15);
 }

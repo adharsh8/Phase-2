@@ -23,6 +23,7 @@ export class ProjectComponent implements OnInit {
   streamName : any;
   Id : number;
   status : string;
+  
 
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
   constructor(private router: Router, private dataservice : DataService, public dialog: MatDialog,
@@ -41,6 +42,7 @@ export class ProjectComponent implements OnInit {
           console.log(this.dataSource);
           data.forEach(element => {
             console.log(element);
+           
             if(element.StatusInfo == "Deployed")
             {
               this.Id= element.EmployeeStream_Id;
@@ -60,6 +62,8 @@ export class ProjectComponent implements OnInit {
   {
     this.allotment.EmployeeStream_Id = empproj.EmployeeStream_Id;
     localStorage.setItem('empstreamid',JSON.stringify(this.allotment.EmployeeStream_Id));
+    localStorage.setItem('Project-status',empproj.StatusInfo);
+    localStorage.setItem('Project-Id',empproj.EmployeeStream_Id);
     this.router.navigate(['add-project']);
   }
   openDialog(action,obj) {

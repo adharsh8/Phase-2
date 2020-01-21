@@ -6,7 +6,7 @@
     <mat-card-header>
         <h4 class="header">PROJECT ALLOCATION</h4>
   </mat-card-header>
-<div class = "project-container" >
+<div class = "project-container" *ngIf= "ProjectStatus == 'Allocated';else otherStatus" >
     <form [formGroup]="ProjectForm" autocomplete="off">
         <mat-card-content>
             <table class="table">
@@ -16,7 +16,7 @@
                         <td>
                             <mat-form-field class="project" >       
                          <mat-select required formControlName="ProjectName" [ngClass]="displayFieldCss('ProjectName')" >
-                              <mat-option  *ngFor="let Proj of ProjTypelist" [value]="Proj">{{ Proj.key }}</mat-option>
+                              <mat-option  *ngFor="let Proj of ProjectDetails" [value]="Proj">{{ Proj.projectname }}</mat-option>
                          </mat-select>
                          <mat-label >PROJECT NAME</mat-label>
                        </mat-form-field>
@@ -27,7 +27,7 @@
                         <td>
                             <mat-form-field class="roles">
                          <mat-select required formControlName="Roletype" [ngClass]="displayFieldCss('Roletype')">
-                              <mat-option *ngFor="let role of RolesTypeList" [value]="role">{{ role.key }}</mat-option>
+                              <mat-option *ngFor="let role of RoleDetails" [value]="role">{{ role.rolesname }}</mat-option>
                          </mat-select>
                          <mat-label>ROLE TYPE</mat-label>      
                        </mat-form-field>
@@ -72,6 +72,56 @@
             <button  mat-raised-button color="warn" class="btn2" (click)="reset()" type="reset">Clear</button>
          </mat-card-actions>
     </form>
+
 </div>
+<ng-template #otherStatus>
+    <form [formGroup]="ProjectForm" autocomplete="off">
+    <mat-card-content>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row"></th>
+                    <td class="proj2">
+                         <mat-label>Project Name :</mat-label>     
+                         {{prjname}}  
+                    </td>
+
+                    <td class="role2">
+                        <mat-label>Role Type :</mat-label>
+                        {{rolename}}
+                    </td>
+                  
+                </tr><br>
+                <tr>
+                    <th scope="row"></th>
+                    <td class="fromdate2">
+                        
+                        <mat-label>From Date :</mat-label>
+                        {{begindate | date:'mediumDate'}}
+                          
+                    </td>
+                    <td class="todate">
+                        <mat-label class="name"></mat-label> 
+                       
+                        
+                        <mat-form-field  class="toDate">
+                               <input matInput [matDatepicker]="picker2" placeholder="To Date"  formControlName="toDate" [ngClass]="displayFieldCss('toDate')">
+                              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                              <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                      <!--  <app-field-error-display [displayError]="isFieldValidToDate1('toDate')"  errorMsg="{{errorMsgEndDate}}">
+                        </app-field-error-display> -->
+                        
+                  </td>
+                  </tr>
+            </tbody>
+        </table>
+    </mat-card-content>
+    <mat-card-actions>
+        <button  mat-raised-button color="primary" class="btns1" type="submit" (click)="onModify()" >Submit</button>
+        <button  mat-raised-button color="warn" class="btns2" (click)="reset()" type="reset">Clear</button>
+     </mat-card-actions>
+</form>
+</ng-template>
 </mat-card>
 </body>

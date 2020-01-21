@@ -27,7 +27,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { StatusModalComponent } from './project/status-modal/status-modal.component';
 import { ChartComponent } from './chart/chart.component';
 import { FieldErrorDisplayModule } from './field-error-display/field-error-display.module';
-import { AvatarModule } from 'ngx-avatar';
+//import { AvatarModule } from 'ngx-avatar';
 
 //I keep the new line
 @NgModule({
@@ -76,7 +76,7 @@ import { AvatarModule } from 'ngx-avatar';
     MatFormFieldModule,
     FieldErrorDisplayModule,
     MatSnackBarModule,
-    AvatarModule
+    //AvatarModule
   ],
   providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
     MatDialogModule, AuthGuard, {

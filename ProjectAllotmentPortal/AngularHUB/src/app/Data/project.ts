@@ -1,6 +1,7 @@
 export class project{
-    projectname : string;
-    FromDate : Date;
+    EmployeeProject_Id : number;
+    ProjectName : string;
+    StartDate : Date;
     ToDate : Date;
-    RoleType : string;
+    RoleName : string;
 }
