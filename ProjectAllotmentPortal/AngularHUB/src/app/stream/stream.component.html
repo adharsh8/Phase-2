@@ -1,16 +1,17 @@
 
-
+<mat-card class='dashboard-card'>
 <button mat-raised-button color="primary" class="btn1" [matMenuTriggerFor]="beforeMenu">View Chart</button>
 <mat-menu #beforeMenu="matMenu" xPosition="before">
   <button mat-menu-item (click)="chart('streamChart')" >STREAM</button>
   <button mat-menu-item (click)="chart('statusChart')">STATUS</button>
 </mat-menu>
-<mat-form-field class="filters">
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" autocomplete="off">
+<mat-form-field class="filters" appearance="outline">
+  <mat-icon matSuffix>search</mat-icon>
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by Employee" autocomplete="off">
 </mat-form-field>
-
 <body>
-<div >
+<div class="scroll">
   <table class="example-container mat-elevation-z8" mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="employeename">
@@ -55,3 +56,4 @@
   </table>
 </div>
 </body>
+</mat-card>

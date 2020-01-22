@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using ProjectAllotmentHUB.Models;
+using Stream = ProjectAllotmentHUB.Models.Stream;
 
 namespace ProjectAllotmentHUB.HelperClass
 {
@@ -30,6 +32,22 @@ namespace ProjectAllotmentHUB.HelperClass
 
                     ex = ex.InnerException;
                 }
+            }
+        }
+        public static void LoginLog(dynamic username)
+        {
+            string filePath;
+            filePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LoginFile");
+            if(!File.Exists(filePath))
+            {
+                File.Create(filePath).Dispose();
+            }
+            using (StreamWriter writer = new StreamWriter(filePath, true))
+            {
+                writer.WriteLine("-----------------------------------------------------------------------------");
+                writer.WriteLine("User : " + username.COEname);
+                writer.WriteLine("Date : " + DateTime.Now.ToString());
+                writer.WriteLine();
             }
         }
     }

@@ -2,21 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { project } from 'src/app/Data/project';
 import { ProjectAllotment } from 'src/app/Data/ProjectAllotment';
-import {ProjectComponent} from 'src/app/project/project.component';
 import { EmployeeProject } from 'src/app/Data/EmployeeProject';
 import { Router } from '@angular/router';
 import {DataService} from'src/app/Data/data.service';
 import { MatSnackBar } from '@angular/material';
 
-interface Projectlist {
-  key: string;
-  value: number;
-}
-interface roles
-{
-  key: string;
-  value: number;
-}
 
 @Component({
   selector: 'app-addproject',
@@ -25,24 +15,10 @@ interface roles
 })
 export class AddprojectComponent implements OnInit {
 
-  
-  ProjTypelist: Array<Projectlist> = [
-    { key: 'Team Digital', value: 201 },
-    { key: 'BPMOnline', value: 202 },
-    { key: 'Revlon', value: 203 },
-    { key: 'Mears', value: 204 }
-  ];
-  RolesTypeList: Array<roles> = [
-    { key: 'Full-Time', value: 101 },
-    { key: 'Part-Time', value: 102 },
-    { key: 'Support', value: 103 }
-  ]
-
   updProjectName: any;
   varFromDate : Date;
   varToDate : Date;
   ProjectForm: any;
-  
   projects : project = new project();
   allotments : ProjectAllotment = new ProjectAllotment();
   projectss : project[] = [];
@@ -51,12 +27,11 @@ export class AddprojectComponent implements OnInit {
   begindate : Date;
   finishdate : Date;
   rolename : string;
-  
   employeeprojs : EmployeeProject[];
   ID : number;
   currentDate = new Date();
-  errorMsgFromDate:string;
-  errorMsgToDate: string;
+  errorMsgFromDate:string ="";
+  errorMsgToDate: string= "";
   ProjectStatus : string;
   ProjectId : number;
   errorMsgEndDate : string;
@@ -64,6 +39,7 @@ export class AddprojectComponent implements OnInit {
   departmentname : string;
   ProjectDetails : string[];
   RoleDetails : string[];
+ 
 
   constructor(private form: FormBuilder, private routers: Router,private datum: DataService,
     private _snackBar: MatSnackBar) { }
@@ -130,10 +106,12 @@ export class AddprojectComponent implements OnInit {
   {
     if(this.ProjectForm.get(field).valid)
     {
-      if(this.ProjectForm.get(field).value < this.currentDate){
+      if(this.ProjectForm.get(field).value < this.currentDate){ 
         this.errorMsgFromDate="Project cannot be allocated for earlier days";
+        
         return true;
     }
+  
   }
   else{
     this.errorMsgFromDate="Please Enter From Date";
@@ -149,11 +127,12 @@ export class AddprojectComponent implements OnInit {
       }
     }
     else{
+      
       this.errorMsgToDate="Please Enter To Date";
       return !this.ProjectForm.get(field).valid && (this.ProjectForm.get(field).touched);
     }  
   }
-  isFieldValidToDate1(field: string)
+  isFieldValidToDateNew(field: string)
   {
     console.log(this.ProjectForm.get(field).value);
     if(this.ProjectForm.get(field).valid){

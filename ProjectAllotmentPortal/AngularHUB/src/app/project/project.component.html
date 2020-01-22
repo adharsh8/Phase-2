@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<mat-card class="projectallot-card">
 <body class="content">
 <div class="example-container mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
@@ -33,7 +34,7 @@
       <ng-container matColumnDef="Action">
         <th mat-header-cell class="tablehead" *matHeaderCellDef>Action</th>
         <td mat-cell class="tablecontent" *matCellDef="let element">
-          <a class="btn-floating btn-large cyan pulse" (click)="openDialog('Update',element)">
+          <a class="btn-floating btn-medium cyan pulse" (click)="openDialog('Update',element)">
             <i class="tiny material-icons">edit</i></a>
         </td>
      
@@ -50,6 +51,6 @@
     </table>
   </div>
 </body>
-
+</mat-card>
 <!--<mat-icon matSuffix>mode_edit</mat-icon>
           <a (click)="openDialog('Update',element)">Edit</a>-->

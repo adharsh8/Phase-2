@@ -1,6 +1,5 @@
 .error-msg {
   color: #a94442;
-}
-.fix-error-icon {
-  top: 27px;
+  left: 10em;
+  position: relative;
 }

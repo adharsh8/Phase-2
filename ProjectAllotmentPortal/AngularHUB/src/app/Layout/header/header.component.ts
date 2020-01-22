@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/Data/data.service';
 
 
 
@@ -10,9 +11,24 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private route : Router) { }
+  userLogin : string;
+  displaydept : any;
+  username : string;
+
+  constructor(private route : Router,private dataservice : DataService) { }
 
   ngOnInit() {
+
+    this.dataservice.UImsg$.subscribe(
+      message =>{
+        this.displaydept = message;
+        this.username = this.displaydept.COEname;
+       
+        console.log(this.username);
+      }
+    )
+
+    this.userLogin = localStorage.getItem('User-Name');
   }
   Logout()
   {

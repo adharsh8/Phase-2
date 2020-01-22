@@ -20,7 +20,9 @@ namespace ProjectAllotmentHUB.HelperClass
                     {
                         if (string.Compare((password), user.Password) == 0)
                         {
+                            LogFile.LoginLog(user);
                             return "Login Successful!";
+
                         }
                         else
                         {

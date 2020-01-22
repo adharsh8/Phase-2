@@ -1,16 +1,26 @@
-
-table{
+.dashboardCard
+{
   position: relative;
-  box-shadow: 10px 10px 5px grey;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(100, 51, 74, 5); 
   width: 90%;
   left: 5%;
   top:3em;
+  height: 410px;
   
 }
+table{
+  position: relative;
+  width: 100%;
+}
+.scroll
+{
+  position: relative;
+  overflow: auto;
+  max-height: 350px;
+}
+
 .filters
 {
-  top: 4em;
-  left: 5%;
   position: relative;
   font-size: 15px;
   width: 20%;
@@ -30,6 +40,7 @@ table{
 .hRef
 {
   cursor: pointer;
+  font-weight: bold;
 }
 .btn1:hover{
   transform: scale(1.15);
@@ -37,51 +48,19 @@ table{
 .tablecontent
 {
   position: relative;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   font: bold;
   font-size: 15px;
   color: black;
-  text-align: justify;
+  text-align: center;
 }
 .tablehead{
-  font-weight: bolder;
   font-size: 17px;
   padding-top: 1em;
   padding-bottom: 1em;
   position: relative;
   color: black;
+  background-color: #bdbdbd;
+  text-align: center;
 }
-/*.tablehead{
-  font-weight: bolder;
-  font-size: 17px;
-  padding-top: 1em;
-  padding-bottom: 1em;
- 
-  color: black;
-}
-.tablecontent
-{
- 
-  padding-top: 1em;
-  padding-bottom: 1em;
-  font: bold;
-  font-size: 15px;
-  color: black;
-  text-align: justify;
-}
-.content
-{
-  position: relative;
-  left: 9em;
-  box-shadow: 10px 10px 5px grey;
-  width: 80%;
-  top: 1em;
-}
-.filters
-{
-  left: 9em;
-  font-size: 15px;
-  width: 80%;
-
-}*/

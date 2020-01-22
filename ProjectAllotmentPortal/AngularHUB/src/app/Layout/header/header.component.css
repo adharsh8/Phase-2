@@ -22,4 +22,8 @@
 #icons1:hover,#icons2:hover{
     transform: scale(1.15);
 }
+.drop-btn
+{
+    cursor: pointer;
+}
 

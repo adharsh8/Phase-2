@@ -2,14 +2,14 @@
 <mat-toolbar class="bg">
     <mat-toolbar-row>
       <div *ngIf= "data === 'HR'; else other_department">
-        <a class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/welcomepage'"> HOME </a>
-        <a class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/hrdashboard'"> EMPLOYEELIST </a>
-        <a class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/stream'"> DASHBOARD </a> 
+        <a class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/welcomepage'"> Home </a>
+        <a class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/hrdashboard'"> Stream Allocation </a>
+        <a class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/stream'"> Dashboard </a> 
       </div>
       <ng-template #other_department>
-        <a  class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/welcomepage'"> HOME </a>
-        <a  class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/project'"> EMPLOYEELIST </a>
-        <a  class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/display-project'"> DASHBOARD </a>
+        <a  class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/welcomepage'"> Home </a>
+        <a  class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/project'"> Project Allocation </a>
+        <a  class="active" mat-button  [routerLinkActive]="['class1']" [routerLink]="'/display-project'"> Dashboard </a>
       </ng-template>
     </mat-toolbar-row>
   

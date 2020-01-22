@@ -1,15 +1,19 @@
-table{
+.dashboard-card
+{
   position: relative;
-  box-shadow: 10px 10px 5px grey;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(100, 51, 74, 5); 
   width: 90%;
   left: 5%;
   top:3em;
-  
+  height: 410px;
+}
+table
+{
+  position: relative;
+  width: 100%; 
 }
 .filters
 {
-  top: 4em;
-  left: 5%;
   position: relative;
   font-size: 15px;
   width: 20%;
@@ -22,21 +26,31 @@ table{
   right: 5em;
 }
   .tablehead{
-    font-weight: bolder;
+    
     font-size: 17px;
     padding-top: 1em;
     padding-bottom: 1em;
     position: relative;
     color: black;
+    text-align: center;
+    background-color: #bdbdbd;
+    
   }
   .tablecontent
   {
     position: relative;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     font: bold;
     font-size: 15px;
     color: black;
-    text-align: justify;
+    text-align: center;
+    
+    
+  }
+  .scroll
+  {
+    overflow-y: auto;
+    max-height: 300px;
   }
 

@@ -6,14 +6,30 @@
         <div>
             <h2 id="header">PROJECT ALLOTMENT PORTAL</h2>
         </div>
-        <div >
+  <!--  <div>
             
             <i id="icons1" class="small material-icons" >mail</i>
-            <i id="icons2" class="small material-icons"  (click)="Logout()">person</i>
-            
+            <i id="icons2" class="small material-icons"  (click)="Logout()">person</i>            
+    </div> -->
+
+    <div [ngSwitch]="username" >
+        <div *ngSwitchCase="'Srivatsan'">
+            <ngx-avatar src="../../../assets/Srivathsan-Santhanam.jpg" size="40"[matMenuTriggerFor]="beforeMenu">
+            </ngx-avatar>
+        </div>
+        <div *ngSwitchCase="'Srinithi'">
+            <ngx-avatar src="../../../assets/srinidhi.jpg" size="40" [matMenuTriggerFor]="beforeMenu">
+            </ngx-avatar>
+        </div>
+        <div *ngSwitchDefault>
+            <ngx-avatar src="../../../assets/sugitra.jpg" size="40"  [matMenuTriggerFor]="beforeMenu" ></ngx-avatar>
+        </div>
+        <mat-menu #beforeMenu="matMenu" xPosition="before" class="drop-btn">
+            <button mat-menu-item>Home</button>
+            <button mat-menu-item href='https://outlook.live.com/owa/'>My Account</button>
+            <button mat-menu-item (click)="Logout()">Log Out</button>
+          </mat-menu>
     </div>
-    <!--<ngx-avatar name="John Doe"></ngx-avatar>-->
-    
     </mat-toolbar-row>
 </mat-toolbar>
 

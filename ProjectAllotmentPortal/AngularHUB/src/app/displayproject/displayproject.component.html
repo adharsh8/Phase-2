@@ -1,10 +1,14 @@
+
+<mat-card class="dashboardCard">
 <button mat-raised-button color="primary" class="btn1" type="submit" (click)="chart('projectchart')" >View Chart</button>
-<mat-form-field class="filters">
-    <input matInput (keyup)="applyFilter($event.target.value)" class="material-icons"placeholder="Filter" autocomplete="off">
-
+<mat-form-field class="filters" appearance="outline">
+  <mat-icon matSuffix>search</mat-icon>
+  <mat-label >Search</mat-label>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by Employee" autocomplete="off">
   </mat-form-field>
-  <body class="content">
 
+  <body class="content">
+    <div class="scroll">
   <table mat-table [dataSource]="dataSource" class="example-container mat-elevation-z8">
     
     <ng-container matColumnDef="name">
@@ -65,5 +69,6 @@
     [ngClass]="{'make-red':element.StatusInfo == 'Reallocate'}"></tr>
     
   </table>
-
+</div>
 </body>
+</mat-card>

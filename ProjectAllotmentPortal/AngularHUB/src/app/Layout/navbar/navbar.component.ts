@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
 
   displaydept : any;
   data : any;
+  username : string;
 
   constructor(private dataservice : DataService) { }
 
@@ -18,7 +19,9 @@ export class NavbarComponent implements OnInit {
       message =>{
         this.displaydept = message;
         this.data = this.displaydept.StreamName;
-        console.log(this.data);
+        this.username = this.displaydept.COEname;
+        localStorage.setItem('User-Name',this.username);
+        console.log(this.username);
       }
     )
   }
