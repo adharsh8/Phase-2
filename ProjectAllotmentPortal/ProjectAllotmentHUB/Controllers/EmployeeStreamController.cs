@@ -118,13 +118,13 @@ namespace ProjectAllotmentHUB.Controllers
 
                         entity.SaveChanges();
 
-                        return Ok("Employee Status has Updated");
+                        return Ok("Employee Status has  Updated Successfully");
                     }
                     else if(emp.Employee.StatusInfo == "Deployed")
                     {
                         emp.Employee.StatusInfo = status.StatusInfo;
                         entity.SaveChanges();
-                        return Ok("Employee Status has Updated");
+                        return Ok("Employee Status has Updated Successfully");
                         
                     }
 

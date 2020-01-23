@@ -35,7 +35,7 @@
       <ng-container matColumnDef="INITIATE">
         <th mat-header-cell *matHeaderCellDef class="tablehead"> Allocation </th>
         <td mat-cell class="tablecontent" *matCellDef="let element">
-          <button mat-button matTooltip="Info about the action" aria-label="Button that displays a tooltip when focused or hovered over"
+          <button mat-button matTooltip="Allocate Stream" matTooltipPosition ="right"
            (click)="openDialog('Add',element)" mat-raised-button color="primary">Allocate</button>
         </td>
       </ng-container>

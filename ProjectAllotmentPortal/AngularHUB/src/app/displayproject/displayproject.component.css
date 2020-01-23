@@ -40,7 +40,8 @@ table{
 .hRef
 {
   cursor: pointer;
-  font-weight: bold;
+  text-decoration: underline;
+  font-style: italic;
 }
 .btn1:hover{
   transform: scale(1.15);

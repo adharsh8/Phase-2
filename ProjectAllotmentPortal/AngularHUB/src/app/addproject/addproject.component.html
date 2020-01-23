@@ -47,7 +47,7 @@
                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                     <mat-datepicker #picker1></mat-datepicker>
                               </mat-form-field>
-                              <app-field-error-display [displayError]="isFieldValidFromDate('fromDate')"  errorMsg="">
+                              <app-field-error-display [displayError]="isFieldValidFromDate('fromDate')"  errorMsg="Please Enter From Date">
                             </app-field-error-display>
                               
                         </td>
@@ -60,7 +60,7 @@
                                   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                   <mat-datepicker #picker2></mat-datepicker>
                             </mat-form-field>
-                            <app-field-error-display [displayError]="isFieldValidToDate('toDate')"  errorMsg="">
+                            <app-field-error-display [displayError]="isFieldValidToDate('toDate')"  errorMsg="Please Enter To Date">
                             </app-field-error-display> 
                             
                       </td>
@@ -110,7 +110,7 @@
                               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                               <mat-datepicker #picker2></mat-datepicker>
                         </mat-form-field>
-                        <app-field-error-display [displayError]="isFieldValidToDateNew('toDate')"  errorMsg="">
+                        <app-field-error-display [displayError]="isFieldValidToDateNew('toDate')"  errorMsg="Please Enter To Date">
                         </app-field-error-display> 
                         
                   </td>

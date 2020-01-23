@@ -3,6 +3,7 @@ import { MatTableDataSource, MatDialog } from '@angular/material';
 import { DataService } from '../Data/data.service';
 import { Router } from '@angular/router';
 import { ChartComponent } from '../chart/chart.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-stream',

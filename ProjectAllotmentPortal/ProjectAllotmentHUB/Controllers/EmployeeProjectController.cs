@@ -288,7 +288,7 @@ namespace ProjectAllotmentHUB.Controllers
                         emp.EndDate = enddate;
                         emp.EmployeeStream.Employee.StatusInfo = "Deployed";
                         entity.SaveChanges();
-                        return Ok("End Date Changed Successfully");
+                        return Ok("Employee retained Changed Successfully");
                     }
                 }
             }

@@ -34,7 +34,7 @@
       <ng-container matColumnDef="Action">
         <th mat-header-cell class="tablehead" *matHeaderCellDef>Action</th>
         <td mat-cell class="tablecontent" *matCellDef="let element">
-          <a class="btn-floating btn-medium cyan pulse" (click)="openDialog('Update',element)">
+          <a class="btn-floating btn-medium cyan pulse" matTooltip="Update Status" matTooltipPosition ="right" (click)="openDialog('Update',element)">
             <i class="tiny material-icons">edit</i></a>
         </td>
      
@@ -44,11 +44,13 @@
         <th mat-header-cell class="tablehead" *matHeaderCellDef> Allocate </th>
         <td mat-cell class="tablecontent" *matCellDef="let element">
           <button mat-button [disabled]="element.StatusInfo == 'Waiting for Allocation'"
+          matTooltip="Allocate Project" matTooltipPosition ="right"
           (click)="OnSumbit(element)" mat-raised-button color="primary">ADD PROJECT</button>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+   
   </div>
 </body>
 </mat-card>

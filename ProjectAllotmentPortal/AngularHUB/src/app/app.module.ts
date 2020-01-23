@@ -28,6 +28,7 @@ import { StatusModalComponent } from './project/status-modal/status-modal.compon
 import { ChartComponent } from './chart/chart.component';
 import { FieldErrorDisplayModule } from './field-error-display/field-error-display.module';
 import { AvatarModule } from 'ngx-avatar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -75,11 +76,11 @@ import { AvatarModule } from 'ngx-avatar';
     MatFormFieldModule,
     FieldErrorDisplayModule,
     MatSnackBarModule,
-    AvatarModule
+    AvatarModule,
+    MatTooltipModule
    
   ],
-  providers: [{ provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
-    MatDialogModule, AuthGuard, {
+  providers: [ AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

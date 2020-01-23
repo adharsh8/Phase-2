@@ -64,7 +64,7 @@ streamTypelist: Array<Streams> = [
           error =>  this.openSnackBar(error.error.message,'Close')
     );
     this.dataservice.UpdateStatus(this.employeeId).subscribe();
-    this.router.navigate(['stream']);
+    
   }
   openSnackBar(message: any, action: string) {
     this._snackBar.open(message, action, {
@@ -72,7 +72,7 @@ streamTypelist: Array<Streams> = [
       verticalPosition: 'top',
       horizontalPosition: 'right'
     });
-
+    this.router.navigate(['stream']);
   }
 
   ngOnInit(){

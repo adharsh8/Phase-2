@@ -107,8 +107,8 @@ export class AddprojectComponent implements OnInit {
     if(this.ProjectForm.get(field).valid)
     {
       if(this.ProjectForm.get(field).value < this.currentDate){ 
-        this.errorMsgFromDate="Project cannot be allocated for earlier days";
-        
+        //this.errorMsgFromDate="Project cannot be allocated for earlier days";
+        this.resetFromdate();
         return true;
     }
   
@@ -122,7 +122,8 @@ export class AddprojectComponent implements OnInit {
   isFieldValidToDate(field: string) {
     if(this.ProjectForm.get(field).valid){
       if(this.ProjectForm.get('fromDate').value >= this.ProjectForm.get(field).value ){
-        this.errorMsgToDate="To Date cannot be before From Date";
+        //this.errorMsgToDate="To Date cannot be before From Date";
+        this.resetTodate();
         return true;
       }
     }
@@ -135,9 +136,13 @@ export class AddprojectComponent implements OnInit {
   isFieldValidToDateNew(field: string)
   {
     console.log(this.ProjectForm.get(field).value);
+    console.log(this.begindate);
     if(this.ProjectForm.get(field).valid){
       if(this.begindate >= this.ProjectForm.get(field).value){
-        this.errorMsgEndDate = "To Date cannot be before From Date";
+        
+        //this.errorMsgEndDate = "To Date cannot be before From Date";
+        this.resetTodate();
+        return true;
       }
     }
     else{
@@ -150,6 +155,14 @@ export class AddprojectComponent implements OnInit {
   {
     this.routers.navigate(['project']);
   }
+  resetFromdate()
+  {
+    this.ProjectForm.get('fromDate').reset();
+  }
+  resetTodate()
+  {
+    this.ProjectForm.get('toDate').reset();
+  }
   reset(){
     this.ProjectForm.reset();
   }
@@ -160,9 +173,10 @@ export class AddprojectComponent implements OnInit {
       this.EndDate = this.allotments.EndDate;
       console.log(this.EndDate);
 
-     this.datum.ChangeEndDate(this.prjId,this.EndDate).subscribe();
-     this.routers.navigate(['display-project']);
-    
+     this.datum.ChangeEndDate(this.prjId,this.EndDate).subscribe(
+      results =>  this.openSnackBar(results,'Close'),
+      error =>  this.openSnackBar(error.error.message,'Close')
+     );    
   }
   onSubmit(){
     if(this.ProjectForm.valid){
@@ -191,8 +205,7 @@ export class AddprojectComponent implements OnInit {
     
     this.ID = this.allotments.EmployeeStream_Id;
     this.datum.UpdateDashboard(this.ID).subscribe();
-    this.routers.navigate(['display-project']);
-    
+        
   }
   openSnackBar(message: any, action: string) {
     this._snackBar.open(message, action, {
@@ -200,7 +213,7 @@ export class AddprojectComponent implements OnInit {
       verticalPosition: 'top',
       horizontalPosition: 'right'
     });
-
+    this.routers.navigate(['display-project']);
   }
 
 }

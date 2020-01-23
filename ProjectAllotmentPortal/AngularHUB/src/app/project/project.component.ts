@@ -58,6 +58,8 @@ export class ProjectComponent implements OnInit {
 
   }
 
+ 
+
   OnSumbit(empproj)
   {
     this.allotment.EmployeeStream_Id = empproj.EmployeeStream_Id;
@@ -74,7 +76,7 @@ export class ProjectComponent implements OnInit {
       data:obj
     });
     dialogRef.afterClosed().subscribe(result => {
-     
+     console.log(result);
       this.dataservice.getEmployeeProj(this.streamName).subscribe(
         data =>{this.dataSource =  new  MatTableDataSource(data) as any ; 
 

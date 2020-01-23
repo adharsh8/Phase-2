@@ -1,8 +1,9 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmployeeProject } from 'src/app/Data/EmployeeProject';
 import { DataService } from 'src/app/Data/data.service';
+import { Router } from '@angular/router';
 
 
 interface Status
@@ -33,8 +34,8 @@ export class StatusModalComponent{
   constructor(
     public dialogRef: MatDialogRef<StatusModalComponent>,
     //@Optional() is used to prevent error if no data is passed
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: Status, private form: FormBuilder,
-                        private dataservice : DataService ) {
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: Status, private form: FormBuilder,private router: Router,
+                        private dataservice : DataService,private _snackBar: MatSnackBar) {
 
       console.log(data);
       this.local_data = {...data};
@@ -46,9 +47,7 @@ export class StatusModalComponent{
      ngOnInit(){
       this.statusform = this.form.group({    
         statusid: ['',Validators.required]   // will use the property in html page  
-        })  
-        
-      
+        })        
     }
 
   doAction(){
@@ -56,12 +55,20 @@ export class StatusModalComponent{
     this.status = this.empStatus.StatusInfo;
     console.log(this.empStatus.StatusInfo);
     console.log(this.local_data.StatusInfo);
-    this.dataservice.UpdateEmployeeProjStatus(this.Id,this.status).subscribe();
+    this.dataservice.UpdateEmployeeProjStatus(this.Id,this.status).subscribe(
+      results =>  this.openSnackBar(results,'Close'),
+      error =>  this.openSnackBar(error.error.message,'Close')
+    );
     console.log(this.local_data);
     this.dialogRef.close();
-    
-    
- 
+  }
+  openSnackBar(message: any, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right'
+    });
+    this.router.navigate(['project']);
   }
  
   closeDialog(){

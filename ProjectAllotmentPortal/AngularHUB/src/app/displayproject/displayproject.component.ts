@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
 import {DataService} from 'src/app/Data/data.service';
 import { Router } from '@angular/router';
 import { ChartComponent } from '../chart/chart.component';
@@ -14,7 +14,9 @@ import { EmployeeProject } from '../Data/EmployeeProject';
 })
 export class DisplayprojectComponent implements OnInit {
 
-  constructor(private display : DataService, private router : Router,public dialog: MatDialog) { }
+  constructor(private display : DataService, private router : Router,public dialog: MatDialog,
+    private _snackBar: MatSnackBar) { }
+
   displayedColumns: string[] = [ 'name', 'EmpId','stream', 'ProjectName','startdate','enddate','role','status'];
   dataSource = new MatTableDataSource();
   streamName : any;
@@ -48,7 +50,10 @@ export class DisplayprojectComponent implements OnInit {
               console.log(this.Id);
               element.StatusInfo = "Reallocate";
               this.status = element.StatusInfo;
-              this.display.UpdateEmployeeProjStatus(this.Id,this.status).subscribe();
+              this.display.UpdateEmployeeProjStatus(this.Id,this.status).subscribe(
+                results =>  this.openSnackBar(results,'Close'),
+                error =>  this.openSnackBar(error.error.message,'Close')
+              );
              
             }
             this.final = element.StatusInfo;
@@ -60,6 +65,14 @@ export class DisplayprojectComponent implements OnInit {
         }  
     )
 
+  }
+  openSnackBar(message: any, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'right'
+    });
+    this.router.navigate(['display-project']);
   }
 chart(projchart : string)
 {
@@ -80,4 +93,6 @@ ExtendProject(value)
   localStorage.setItem('Project-status',value.StatusInfo);
   this.router.navigate(['add-project']);
 }
+
+
 }
