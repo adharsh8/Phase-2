@@ -33,17 +33,13 @@ export class DisplayprojectComponent implements OnInit {
     this.streamName = localStorage.getItem('deptName');
     this.display.getdisplayEmployee(this.streamName).subscribe(
       data => {  this.dataSource=new  MatTableDataSource(data) as any ;
-        console.log(this.dataSource);
-        console.log(this.streamName);
-
+       
         this.display.getColorList(this.streamName).subscribe(
         colorlist =>{
           this.result = colorlist;
-          console.log(colorlist);
           
           colorlist.forEach(element => {
-            console.log(element);
-            
+          
             if(element.StatusInfo == "Deployed")
             {
               this.Id= element.EmployeeStream_Id;
@@ -53,8 +49,7 @@ export class DisplayprojectComponent implements OnInit {
               this.display.UpdateEmployeeProjStatus(this.Id,this.status).subscribe(
                 results =>  this.openSnackBar(results,'Close'),
                 error =>  this.openSnackBar(error.error.message,'Close')
-              );
-             
+              );            
             }
             this.final = element.StatusInfo;
             console.log(this.final);
@@ -77,7 +72,6 @@ export class DisplayprojectComponent implements OnInit {
 chart(projchart : string)
 {
   localStorage.setItem('chartType',projchart);
-  //this.router.navigate(['chart']);
   const dialogRef = this.dialog.open(ChartComponent, {
     width: '850px',
     height : '550px'

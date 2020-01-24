@@ -309,7 +309,7 @@ namespace ProjectAllotmentHUB.Controllers
                 using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
                 {
                     var emplist = (from es in entity.EmployeeProjects
-                                   where (EntityFunctions.DiffDays(today,es.EndDate)<= 6 && 
+                                   where (EntityFunctions.DiffDays(today,es.EndDate)<= 2 && 
                                    name == es.EmployeeStream.Stream.StreamName && today <= es.EndDate)
                                    select new
                                    {

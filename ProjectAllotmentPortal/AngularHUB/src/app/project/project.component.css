@@ -32,3 +32,6 @@
   max-height: 450px;
   overflow-y: auto;
 }
+.mat-row:hover {
+  background-color:#e3f2fd;
+}

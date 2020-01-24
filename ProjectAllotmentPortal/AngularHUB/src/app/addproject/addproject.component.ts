@@ -6,6 +6,7 @@ import { EmployeeProject } from 'src/app/Data/EmployeeProject';
 import { Router } from '@angular/router';
 import {DataService} from'src/app/Data/data.service';
 import { MatSnackBar } from '@angular/material';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -39,7 +40,9 @@ export class AddprojectComponent implements OnInit {
   departmentname : string;
   ProjectDetails : string[];
   RoleDetails : string[];
- 
+  FormattedTodate : string;
+  actualTodate : Date;
+  FormattedFromDate : string;
 
   constructor(private form: FormBuilder, private routers: Router,private datum: DataService,
     private _snackBar: MatSnackBar) { }
@@ -50,13 +53,11 @@ export class AddprojectComponent implements OnInit {
     this.datum.GetProjectName(this.departmentname).subscribe(
       data =>{
         this.ProjectDetails = data;
-        console.log(this.ProjectDetails);
       }
     );
     this.datum.GetRoleType().subscribe(
       data =>{
         this.RoleDetails = data;
-        console.log(this.RoleDetails);
       }
     )
 
@@ -70,7 +71,6 @@ export class AddprojectComponent implements OnInit {
 
     this.ProjectForm.get('ProjectName').valueChanges.subscribe(
       value => { this.updProjectName = value;});
-      console.log(this.updProjectName);
     
       this.ProjectForm.get('fromDate').valueChanges.subscribe(
         value => { this.varFromDate = value;});
@@ -88,7 +88,7 @@ export class AddprojectComponent implements OnInit {
             this.prjname = this.projectss[0].ProjectName;
             this.rolename = this.projectss[0].RoleName;
             this.begindate = this.projectss[0].StartDate;
-            console.log(this.begindate);
+            
           }
         );
       }
@@ -135,11 +135,14 @@ export class AddprojectComponent implements OnInit {
   }
   isFieldValidToDateNew(field: string)
   {
-    console.log(this.ProjectForm.get(field).value);
-    console.log(this.begindate);
+    
+    this.actualTodate = this.ProjectForm.get(field).value;
+    var datePipe = new DatePipe("en-US");
+    this.FormattedTodate = datePipe.transform(this.actualTodate, 'dd/MM/yyyy');
+    this.FormattedFromDate = datePipe.transform(this.begindate, 'dd/MM/yyyy');
+
     if(this.ProjectForm.get(field).valid){
-      if(this.begindate >= this.ProjectForm.get(field).value){
-        
+      if(this.FormattedFromDate >= this.FormattedTodate ){
         //this.errorMsgEndDate = "To Date cannot be before From Date";
         this.resetTodate();
         return true;
@@ -171,11 +174,9 @@ export class AddprojectComponent implements OnInit {
    
       this.allotments.EndDate = this.ProjectForm.get('toDate').value;
       this.EndDate = this.allotments.EndDate;
-      console.log(this.EndDate);
-
-     this.datum.ChangeEndDate(this.prjId,this.EndDate).subscribe(
-      results =>  this.openSnackBar(results,'Close'),
-      error =>  this.openSnackBar(error.error.message,'Close')
+      this.datum.ChangeEndDate(this.prjId,this.EndDate).subscribe(
+        results =>  this.openSnackBar(results,'Close'),
+        error =>  this.openSnackBar(error.error.message,'Close')
      );    
   }
   onSubmit(){
@@ -186,18 +187,10 @@ export class AddprojectComponent implements OnInit {
   finalvalue()
   {
     this.allotments.Project_Id = this.ProjectForm.get('ProjectName').value.projectId;
-    console.log(this.allotments.Project_Id);
     this.allotments.StartDate = this.ProjectForm.get('fromDate').value;
-    console.log(this.allotments.StartDate);
     this.allotments.EndDate = this.ProjectForm.get('toDate').value;
-    console.log(this.allotments.EndDate);
     this.allotments.Roles_Id = this.ProjectForm.get('Roletype').value.rolesid;
-    console.log(this.allotments.Roles_Id);
-
     this.allotments.EmployeeStream_Id = JSON.parse(localStorage.getItem('empstreamid'));
-    console.log(this.allotments.EmployeeStream_Id);
-    console.log(this.allotments);
-    
     this.datum.createEmployee(this.allotments).subscribe(
       results =>  this.openSnackBar(results,'Close'),
       error =>  this.openSnackBar(error.error.message,'Close')
@@ -208,7 +201,7 @@ export class AddprojectComponent implements OnInit {
         
   }
   openSnackBar(message: any, action: string) {
-    this._snackBar.open(message, action, {
+      this._snackBar.open(message, action, {
       duration: 3000,
       verticalPosition: 'top',
       horizontalPosition: 'right'
