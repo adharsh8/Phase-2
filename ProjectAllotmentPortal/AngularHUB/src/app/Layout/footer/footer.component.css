@@ -1,9 +1,13 @@
 :host {
     background-color: rgba(99, 96, 96, 0.527);
     width: 100%;
+    position: absolute;
+    top:37.7em;
   }
   .socialpng{
     padding: 1em;
+    top: 1em;
+    position: relative;
   }
   .rights{
     margin-right: 2em;

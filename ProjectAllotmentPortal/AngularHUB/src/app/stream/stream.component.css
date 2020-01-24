@@ -1,11 +1,11 @@
 .dashboard-card
 {
   position: relative;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(100, 51, 74, 5); 
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5); 
   width: 90%;
   left: 5%;
-  top:3em;
-  height: 410px;
+  top:1em;
+  height: 420px;
 }
 table
 {
@@ -28,8 +28,8 @@ table
   .tablehead{
     
     font-size: 17px;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
     position: relative;
     color: black;
     text-align: center;
@@ -51,6 +51,9 @@ table
   .scroll
   {
     overflow-y: auto;
-    max-height: 300px;
+    max-height: 310px;
+  }
+  .mat-row:hover {
+    background-color:#eeeeee;
   }
 

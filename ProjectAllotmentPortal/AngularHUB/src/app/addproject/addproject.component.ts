@@ -7,12 +7,13 @@ import { Router } from '@angular/router';
 import {DataService} from'src/app/Data/data.service';
 import { MatSnackBar } from '@angular/material';
 import { DatePipe } from '@angular/common';
-
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 @Component({
   selector: 'app-addproject',
   templateUrl: './addproject.component.html',
-  styleUrls: ['./addproject.component.css']
+  styleUrls: ['./addproject.component.css'],
+
 })
 export class AddprojectComponent implements OnInit {
 
@@ -104,6 +105,7 @@ export class AddprojectComponent implements OnInit {
   }
   isFieldValidFromDate(field: string)
   {
+    //console.log(this.ProjectForm.get(field).value);
     if(this.ProjectForm.get(field).valid)
     {
       if(this.ProjectForm.get(field).value < this.currentDate){ 
@@ -120,6 +122,7 @@ export class AddprojectComponent implements OnInit {
 
   }
   isFieldValidToDate(field: string) {
+    //console.log(this.ProjectForm.get(field).value);
     if(this.ProjectForm.get(field).valid){
       if(this.ProjectForm.get('fromDate').value >= this.ProjectForm.get(field).value ){
         //this.errorMsgToDate="To Date cannot be before From Date";
@@ -140,7 +143,8 @@ export class AddprojectComponent implements OnInit {
     var datePipe = new DatePipe("en-US");
     this.FormattedTodate = datePipe.transform(this.actualTodate, 'dd/MM/yyyy');
     this.FormattedFromDate = datePipe.transform(this.begindate, 'dd/MM/yyyy');
-
+    //console.log(this.actualTodate);
+    //console.log(this.FormattedTodate);
     if(this.ProjectForm.get(field).valid){
       if(this.FormattedFromDate >= this.FormattedTodate ){
         //this.errorMsgEndDate = "To Date cannot be before From Date";
@@ -188,7 +192,9 @@ export class AddprojectComponent implements OnInit {
   {
     this.allotments.Project_Id = this.ProjectForm.get('ProjectName').value.projectId;
     this.allotments.StartDate = this.ProjectForm.get('fromDate').value;
+    console.log(this.allotments.StartDate);
     this.allotments.EndDate = this.ProjectForm.get('toDate').value;
+    console.log(this.allotments.EndDate);
     this.allotments.Roles_Id = this.ProjectForm.get('Roletype').value.rolesid;
     this.allotments.EmployeeStream_Id = JSON.parse(localStorage.getItem('empstreamid'));
     this.datum.createEmployee(this.allotments).subscribe(

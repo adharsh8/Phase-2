@@ -20,7 +20,7 @@
     <Property Name="EmployeeProject_Id" Type="Int32" Nullable="false" />
     <Property Name="Status" Type="Boolean" />
     <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" Nullable="false" />
     <Property Name="Roles_Id" Type="Int32" Nullable="false" />
     <Property Name="EmployeeStream_Id" Type="Int32" Nullable="false" />
     <Property Name="Project_Id" Type="Int32" Nullable="false" />
@@ -183,16 +183,5 @@
       <End Role="Stream" EntitySet="Streams" />
       <End Role="EmployeeStream" EntitySet="EmployeeStreams" />
     </AssociationSet>
-    <EntitySet Name="sysdiagrams" EntityType="ProjectAllocationDBModel.sysdiagram" />
   </EntityContainer>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
 </Schema>

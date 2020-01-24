@@ -278,9 +278,6 @@
     <Compile Include="Models\Stream.cs">
       <DependentUpon>ProjectAllotmentModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>ProjectAllotmentModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@
       <Diagram DiagramId="6f589b2ea0c2447d9438734502e0e0df" Name="Diagram1">
         <EntityTypeShape EntityType="ProjectAllocationDBModel.Employee" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectAllocationDBModel.EmployeeProject" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectAllocationDBModel.EmployeeStatu" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectAllocationDBModel.EmployeeStatu" Width="1.75" PointX="7.5" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectAllocationDBModel.EmployeeStream" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectAllocationDBModel.Project" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectAllocationDBModel.Role" Width="1.5" PointX="7.125" PointY="5.375" IsExpanded="true" />
@@ -18,7 +18,6 @@
         <AssociationConnector Association="ProjectAllocationDBModel.EmployeeProject_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectAllocationDBModel.EmployeeStatus_EmployeeProject" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectAllocationDBModel.StreamDetails_Stream" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ProjectAllocationDBModel.sysdiagram" Width="1.5" PointX="5.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

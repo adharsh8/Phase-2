@@ -29,6 +29,7 @@ import { ChartComponent } from './chart/chart.component';
 import { FieldErrorDisplayModule } from './field-error-display/field-error-display.module';
 import { AvatarModule } from 'ngx-avatar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -77,14 +78,17 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FieldErrorDisplayModule,
     MatSnackBarModule,
     AvatarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatMomentDateModule
    
   ],
   providers: [ AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  },
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ModalComponent, StatusModalComponent]
 })

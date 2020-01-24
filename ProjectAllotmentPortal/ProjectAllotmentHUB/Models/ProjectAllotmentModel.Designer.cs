@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\adharsh.s\Desktop\Phase 2\Final\ProjectAllotmentPortal\ProjectAllotmentHUB\Models\ProjectAllotmentModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\adharsh.s\Documents\GitHub\Phase-2\ProjectAllotmentPortal\ProjectAllotmentHUB\Models\ProjectAllotmentModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

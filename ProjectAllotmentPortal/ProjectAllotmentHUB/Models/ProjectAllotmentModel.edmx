@@ -24,7 +24,7 @@
           <Property Name="EmployeeProject_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Status" Type="bit" />
           <Property Name="StartDate" Type="date" Nullable="false" />
-          <Property Name="EndDate" Type="date" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
           <Property Name="Roles_Id" Type="int" Nullable="false" />
           <Property Name="EmployeeStream_Id" Type="int" Nullable="false" />
           <Property Name="Project_Id" Type="int" Nullable="false" />
@@ -71,16 +71,6 @@
           <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
           <Property Name="StreamName" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="EmployeeProject_EmployeeStream">
           <End Role="EmployeeStream" Type="Self.EmployeeStream" Multiplicity="1" />
@@ -138,7 +128,6 @@
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stream" EntityType="Self.Stream" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="EmployeeProject_EmployeeStream" Association="Self.EmployeeProject_EmployeeStream">
             <End Role="EmployeeStream" EntitySet="EmployeeStream" />
             <End Role="EmployeeProject" EntitySet="EmployeeProject" />
@@ -180,7 +169,7 @@
           <Property Name="EmployeeProject_Id" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Boolean" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="Roles_Id" Type="Int32" Nullable="false" />
           <Property Name="EmployeeStream_Id" Type="Int32" Nullable="false" />
           <Property Name="Project_Id" Type="Int32" Nullable="false" />
@@ -343,18 +332,7 @@
             <End Role="Stream" EntitySet="Streams" />
             <End Role="EmployeeStream" EntitySet="EmployeeStreams" />
           </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="ProjectAllocationDBModel.sysdiagram" />
         </EntityContainer>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -432,17 +410,6 @@
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="StreamName" ColumnName="StreamName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ProjectAllocationDBModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

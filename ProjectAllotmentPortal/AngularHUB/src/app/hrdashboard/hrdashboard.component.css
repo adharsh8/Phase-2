@@ -2,23 +2,23 @@
   .content
   {
     position: relative;
-    max-height: 450px;
+    max-height: 400px;
     overflow-y: auto;
   }
   .stream-card
   {
     position: relative;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(100, 51, 74, 5); 
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5); 
     left: 4em;
     width: 90%;
-    top: 3em;
-    height: 420px;
+    top: 1em;
+    height: 425px;
   }
   .tablehead{
     
     font-size: 17px;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
     color: black;
     text-align: center;
     background-color: #bdbdbd;
@@ -31,4 +31,7 @@
     font-size: 15px;
     color: black;
     text-align: center;
+  }
+  .mat-row:hover {
+    background-color:#eeeeee;
   }

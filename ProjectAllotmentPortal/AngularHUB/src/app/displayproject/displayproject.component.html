@@ -1,4 +1,4 @@
-
+<body class="content">
 <mat-card class="dashboardCard">
 <button mat-raised-button color="primary" class="btn1" type="submit" (click)="chart('projectchart')" >View Chart</button>
 <mat-form-field class="filters" appearance="outline">
@@ -7,7 +7,7 @@
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by Employee" autocomplete="off">
   </mat-form-field>
 
-  <body class="content">
+  
     <div class="scroll">
   <table mat-table [dataSource]="dataSource" class="example-container mat-elevation-z8">
     
@@ -71,5 +71,6 @@
   </table>
 </div>
  
-</body>
+
 </mat-card>
+</body>

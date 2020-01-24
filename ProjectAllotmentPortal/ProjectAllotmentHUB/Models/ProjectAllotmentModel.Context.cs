@@ -32,6 +32,5 @@ namespace ProjectAllotmentHUB.Models
         public DbSet<Project> Projects { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Stream> Streams { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

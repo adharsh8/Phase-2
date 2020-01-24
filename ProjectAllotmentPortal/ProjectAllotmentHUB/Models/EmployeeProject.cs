@@ -22,7 +22,7 @@ namespace ProjectAllotmentHUB.Models
         public int EmployeeProject_Id { get; set; }
         public Nullable<bool> Status { get; set; }
         public System.DateTime StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
+        public System.DateTime EndDate { get; set; }
         public int Roles_Id { get; set; }
         public int EmployeeStream_Id { get; set; }
         public int Project_Id { get; set; }

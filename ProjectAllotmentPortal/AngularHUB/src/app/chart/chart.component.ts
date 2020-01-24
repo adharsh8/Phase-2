@@ -194,10 +194,10 @@ export class ChartComponent implements OnInit {
           datasets :[
             {
               data : this.Total1,
-              borderColor: '#3cba9f',  
+              borderColor: '#757575 ',  
                 backgroundColor: [  
-                  "#3cb371",  
-                  "#0000FF",  
+                  "#2196f3",  
+                  "#7e57c2",  
                   "#9966FF",  
                   "#4C4CFF",  
                   "#00FFFF",  
