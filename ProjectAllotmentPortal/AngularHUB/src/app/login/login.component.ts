@@ -11,6 +11,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   isLoginError : boolean = false;
+  isForgotPassword :boolean = true;
+  userArray : any;
+  isvalid : boolean =false;
   
   constructor(private dataservice : DataService, private router : Router) { }
 
@@ -27,5 +30,32 @@ export class LoginComponent implements OnInit {
     (err : HttpErrorResponse)=>{
       this.isLoginError = true;
     });
+  }
+  usernameSubmit(user)
+  {
+    console.log("sdsd");
+    this.dataservice.CheckUsername().subscribe(data =>{
+      this.userArray = data;
+      for(let i=0; i<=this.userArray.length; i++)
+      {
+        if(this.userArray[i].Username==user)
+        {
+          this.isvalid = true;
+          break;
+        }
+        else{
+          this.isvalid = false;
+        }
+      }
+    });
+    if(this.isvalid)
+    {
+      console.log("ffgfhg");
+      this.dataservice.ResetPasswordmail(user).subscribe();
+    }
+  }
+  forgotpassword()
+  {
+    this.isForgotPassword = false;
   }
 }

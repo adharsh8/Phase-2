@@ -1,16 +1,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <body >
-<div class="col s12 m7" id ="container">
+<div class="col s12 m7" id ="container" >
    
     <div class="card horizontal">
       <div class="card-image">
         <img id="image" src="../../assets/team1.jpg">
       </div>
-      <div class="card-stacked">
-        <div class="card-content">
-            <div *ngIf="isLoginError" class="red-text center error-message">
-                <i class="material-icons">error</i> Incorrect username or password
-            </div>
+      <div class="card-stacked" *ngIf = "isForgotPassword">
+        <div class="card-content" >
+          <div *ngIf="isLoginError" class="red-text center error-message">
+            <i class="material-icons">error</i> Incorrect username or password
+        </div>
             <form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(UserName.value,Password.value)" id= "form">
               <h4 class = "head">LOGIN</h4>
                <div class="row">
@@ -25,13 +25,30 @@
                     <input type="password" #Password ngModel name="Password" placeholder="Password" required>
                   </div>
                 </div>
+                <div class="input-field col s12" >
+                  <span (click)="forgotpassword()">Forgot Password</span>
+                </div>
                 <div class="row">
                     <div class="input-field col s12">
                       <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
                     </div>
                   </div>
             </form>
+        </div>      
+      </div>
+      <div *ngIf = "!isForgotPassword">
+        <form #forgotPassword="ngForm" class="col s12 white" (ngSubmit)="usernameSubmit(UserName.value)" id= "form">
+        <h4>Forgot Password</h4>
+        <div class="row">
+          <div class="input-field col s12" >
+            <i class="material-icons prefix">face</i>
+            <input type="text" #UserName ngModel name="UserName" placeholder="Username"  required autocomplete="off">
+          </div>
         </div>
+        <div class="input-field col s12">
+          <button [disabled]="!forgotPassword.valid" class="btn-large btn-submit" type="submit">Login</button>
+        </div>
+      </form>
       </div>
     </div>
   </div>

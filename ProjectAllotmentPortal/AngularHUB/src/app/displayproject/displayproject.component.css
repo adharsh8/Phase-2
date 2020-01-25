@@ -30,6 +30,7 @@ table{
 .make-red{
   background-color: lightcoral;
 }
+
 .btn1
 {
   float: right;
@@ -64,7 +65,4 @@ table{
   color: black;
   background-color: #bdbdbd;
   text-align: center;
-}
-.mat-row:hover {
-  background-color:#eeeeee;
 }

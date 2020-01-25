@@ -8,15 +8,17 @@
     position: relative;
     width: 60%;
     left: 16em;
-    top: 4em; 
+    top: 1.5em; 
     margin-top: 0em;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(100, 51, 74, 5); 
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5); 
   }
 #goback
 {
     cursor: pointer;
+    position: relative;
+    right: 16em;
+    bottom: 3em;
 }
-
 
 .header
 {
@@ -24,7 +26,7 @@
     font-size: 25px;
     position: relative;
     font-weight: bold;
-    bottom: 2em;
+    
 }
 .table
 {
@@ -57,20 +59,21 @@
 }
 .proj2
 {
-    font-size: 18px;
-    left: 6em;
+    font-size: 15px;
+    
+    left: 8em;
     position: relative;
 }
 .role2
 {
-    font-size: 18px;
-    left: 13em;
+    font-size: 15px;
+    left: 16em;
     position: relative;
 }
 .fromdate2
 {
-    font-size: 18px;
-    left: 6em;
+    font-size: 15px;
+    left: 8em;
     position: relative;
 }
 .btns1,.btns2

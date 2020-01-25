@@ -2,6 +2,7 @@
 using ProjectAllotmentHUB.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Objects;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -29,7 +30,7 @@ namespace ProjectAllotmentHUB.Controllers
                     var list3 = list1.Except(list2).ToList();
                     DateTime today = DateTime.Now.Date;
 
-                    var listofEmployees = (from emp in entity.Employees.Where(x => list3.Contains(x.Employee_Id) )
+                    var listofEmployees = (from emp in entity.Employees.Where(x => list3.Contains(x.Employee_Id))
                                            select new
                                            {
                                                emp.Employee_Id,
@@ -40,27 +41,27 @@ namespace ProjectAllotmentHUB.Controllers
                                                emp.DOJ
                                                
                                            }) ;
-                    
-                    string MailId = entity.Streams.Where(e => e.Stream_Id == 1001 ).Select(
-                                    e => new
-                                    {
 
-                                        Mail = e.COEmailId
+                    //string MailId = entity.Streams.Where(e => e.Stream_Id == 1001 ).Select(
+                    //                e => new
+                    //                {
 
-                                    }).FirstOrDefault().Mail;
-                    var trigger = entity.Employees.Where(e => e.DOJ == today).Select(e =>
-                    new {
-                            employeename = e.EmployeeName,
-                            //employeemail = e.EmployeeMailId
-                        }).ToList();
-                  
-                    foreach(var obj in trigger)
-                    {
-                        string names = obj.employeename;
-                        //string mails = obj.employeemail;
-                        EmailGeneration.SendNewJoinersMail(names, MailId);
-                    }
-                    
+                    //                    Mail = e.COEmailId
+
+                    //                }).FirstOrDefault().Mail;
+                    //var trigger = entity.Employees.Where(e =>(EntityFunctions.DiffDays(e.DOJ,today)>=5)).Select(e =>
+                    //new {
+                    //        employeename = e.EmployeeName,
+                    //        //employeemail = e.EmployeeMailId
+                    //    }).ToList();
+
+                    //foreach(var obj in trigger)
+                    //{
+                    //    string names = obj.employeename;
+                    //    //string mails = obj.employeemail;
+                    //    EmailGeneration.SendNewJoinersMail(names, MailId);
+                    //}
+
                     return Ok(listofEmployees.ToList());
                 }
             }

@@ -30,13 +30,18 @@ export class DataService {
     //const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
     return this.http.post<ProjectAllotment[]>(this.Url + 'PostEmployeeProject',  
     employee);  
-
   }
+    ResetPasswordmail(user):Observable<string>{
+      const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+      return this.http.post<string>(this.Url +'SendResetPassword/'+user ,httpOptions);
+    }
     getdisplayEmployee(name): Observable<DisplayProject[]> {
       
       return this.http.get<DisplayProject[]>(this.Url +'GetEmpProj/'+name);
     }
-    
+    CheckUsername()    {
+      return this.http.get(this.Url + 'CheckUsername');
+    }
     getEmployeeProj(name): Observable<EmployeeProject []>{
       
       return this.http.get<EmployeeProject []>(this.Url +'GetEmpNonProject/'+name);

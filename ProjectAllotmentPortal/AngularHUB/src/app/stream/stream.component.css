@@ -44,16 +44,12 @@ table
     font: bold;
     font-size: 15px;
     color: black;
-    text-align: center;
-    
-    
+    text-align: center;   
   }
   .scroll
   {
     overflow-y: auto;
     max-height: 310px;
   }
-  .mat-row:hover {
-    background-color:#eeeeee;
-  }
+ 
 

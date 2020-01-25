@@ -18,7 +18,8 @@ namespace ProjectAllotmentHUB.HelperClass
         
             string subject = "STREAM ALLOTMENT" ;
             string body = "<br/><br/> " + "Hi" + COEname + ":" + "<br/>" +
-                "Allocating the employee:" + empname + "to your Department.";
+                "Allocating the employee:" + empname + "to your Department." +
+                 "<img src=https://media.glassdoor.com/sqll/945068/psiog-digital-squarelogo-1468915701259.png />";
             var smtp = new SmtpClient
             {
                 Host = "smtp.gmail.com",
@@ -45,10 +46,11 @@ namespace ProjectAllotmentHUB.HelperClass
             string subject = "PROJECT ALLOTMENT ";
             string body = "<br/> <br/> " + "Hi " + name + ":" + "<br/>" +
                             "You have allocated to the Project : "+ proName + "<br/>"   + "<br/>" +
-                            "Start of Project : " + " " + project.StartDate + "<br/>" +
-                            "End of Project : " +  project.EndDate + "<br/>" +
+                            "Start of Project : " + " " + project.StartDate.ToString("dd/MM/yyyy") + "<br/>" +
+                            "End of Project : " +  project.EndDate.ToString("dd/MM/yyyy") + "<br/>" +
                             "Role of the Project : " + roleName + "<br/>" +   "<br/>" +
-                            "All the Best..!";
+                            "All the Best..!" +
+                            "<img src=https://media.glassdoor.com/sqll/945068/psiog-digital-squarelogo-1468915701259.png />";
 
             var smtp = new SmtpClient
             {
@@ -75,7 +77,35 @@ namespace ProjectAllotmentHUB.HelperClass
 
             string subject = "STREAM ALLOTMENT - Reminder:";
             string body = "<br/> <br/>" + "The candidate" + name + "joined the organisation and completed his/her Training."
-                            + "<br/>" + "Please allocate stream for the candidate.";
+                            + "<br/>" + "Please allocate stream for the candidate." +
+                            "<img src=https://media.glassdoor.com/sqll/945068/psiog-digital-squarelogo-1468915701259.png />";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
+        }
+        public static void ForgotPassword(string MailId, Stream user)
+        {
+            var fromEmail = new MailAddress("generateemail2019@gmail.com", "HR HUB");
+            var toEmail = new MailAddress(MailId);
+            var fromEmailPassword = "Psiog@123";
+
+           var subject = "Reset Password";
+           var body = "Hi,<br/><br/>We got request for reset your account password. Please click on the below link to reset your password" +
+                "<br/><br/><a href=" + "http://localhost:4200/reset/" + user.Username + ">Reset Password link</a>";
 
             var smtp = new SmtpClient
             {

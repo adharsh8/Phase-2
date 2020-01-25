@@ -1,13 +1,14 @@
 
 <body>
 <mat-card class="project-card" id="block">
-    <i class="material-icons" id="goback" (click)="back()">
-        arrow_back
-        </i>
+
     <mat-card-header>
         <h4 class="header">PROJECT ALLOCATION</h4>
   </mat-card-header>
 <div class = "project-container" *ngIf= "ProjectStatus == 'Allocated';else otherStatus" >
+    <i class="material-icons" id="goback" (click)="back()">
+        arrow_back
+        </i>
     <form [formGroup]="ProjectForm" autocomplete="off">
         <mat-card-content>
             <table class="table">
@@ -77,28 +78,36 @@
 </div>
 <ng-template #otherStatus>
     <form [formGroup]="ProjectForm" autocomplete="off">
+        <i class="material-icons" id="goback" (click)="back()">
+            arrow_back
+            </i>
     <mat-card-content>
         <table class="table">
             <tbody>
                 <tr>
                     <th scope="row"></th>
                     <td class="proj2">
-                         <mat-label>Project Name :</mat-label>
-                         {{prjname}}  
+                         <mat-form-field appearance="outline" >     
+                           <input matInput [readonly]="true" placeholder="Project Name" value="{{prjname}}">
+                            <mat-label >Project Name</mat-label>
+                          </mat-form-field> 
                     </td>
 
                     <td class="role2">
-                        <mat-label>Role Type :</mat-label>
-                        {{rolename}}
+                        <mat-form-field  appearance="outline" >     
+                            <input matInput [readonly]="true" placeholder="Role Name" value="{{rolename}}">
+                             <mat-label >Role Name</mat-label>
+                           </mat-form-field> 
                     </td>
                   
                 </tr><br>
                 <tr>
                     <th scope="row"></th>
                     <td class="fromdate2">
-                        
-                        <mat-label>From Date :</mat-label>
-                        {{begindate | date:'mediumDate'}}
+                        <mat-form-field  appearance="outline" >     
+                            <input matInput [readonly]="true" placeholder="From Date" value="{{begindate | date:'mediumDate'}}">
+                             <mat-label >From Date</mat-label>
+                           </mat-form-field> 
                           
                     </td>
                     <td class="todate">
@@ -120,7 +129,7 @@
     </mat-card-content>
     <mat-card-actions>
         <button  mat-raised-button color="primary" class="btns1" type="submit" (click)="onModify()" >Submit</button>
-        <button  mat-raised-button color="warn" class="btns2" (click)="reset()" type="reset">Clear</button>
+    <!--<button  mat-raised-button color="warn" class="btns2" (click)="resetTodate()" type="reset">Clear</button>-->
      </mat-card-actions>
 </form>
 </ng-template>

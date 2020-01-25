@@ -59,7 +59,49 @@ namespace ProjectAllotmentHUB.Controllers
             return stream;
             }
 
+        [HttpGet]
+        [Route ("api/CheckUsername")]
+        public IHttpActionResult CheckUsername()
+        {
+            try
+            {
+                using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
+                {
+                    var listofUser = from str in entity.Streams
+                                     select new
+                                     {
+                                         str.Username
+                                     };
+                 
 
+                    return Ok(listofUser.ToList()); 
+                }
+            }
+            catch(Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
+        [HttpPost]
+        [Route ("api/resetPasswordlink")]
+        public IHttpActionResult ForgotPassword([FromBody]Stream user)
+        {
+            try
+            {
+                using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
+                {
+                    string MailId = entity.Streams.FirstOrDefault(e => e.Username == user.Username).COEmailId;
+                    EmailGeneration.ForgotPassword(MailId, user);
+                }
+                return Ok("Mail Sent Successfully");
+            }
+            catch(Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
 
         [HttpPost]
         [Route("api/PostStreamdetails")]
