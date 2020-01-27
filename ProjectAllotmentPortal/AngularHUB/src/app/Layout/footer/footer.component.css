@@ -1,5 +1,5 @@
 :host {
-    background-color: rgba(99, 96, 96, 0.527);
+    background-color: #bdbdbd;
     width: 100%;
     position: absolute;
     top:37.7em;
@@ -10,5 +10,6 @@
     position: relative;
   }
   .rights{
-    margin-right: 2em;
+    right: 1em;
+    position: relative;
   }

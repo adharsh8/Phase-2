@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { ChartComponent } from './chart/chart.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'display-project', component : DisplayprojectComponent},
   {path : 'login', component : LoginComponent},
   { path : 'chart', component : ChartComponent},
+  { path : 'resetpassword/:id', component : ResetpasswordComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 

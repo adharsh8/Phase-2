@@ -18,13 +18,19 @@ export class LoginComponent implements OnInit {
   constructor(private dataservice : DataService, private router : Router) { }
 
   ngOnInit() {
+    if(localStorage.getItem('userToken'))
+    {
+      this.router.navigate(['welcomepage']);
+    }
   }
+
 
   OnSubmit(userName,password)
   {
     
     this.dataservice.userAuthentication(userName,password).subscribe((data : any)=>{
       localStorage.setItem('userToken',data.access_token);
+      localStorage.setItem('userId',userName);
       this.router.navigate(['welcomepage']);
     },
     (err : HttpErrorResponse)=>{
@@ -33,13 +39,15 @@ export class LoginComponent implements OnInit {
   }
   usernameSubmit(user)
   {
-    console.log("sdsd");
     this.dataservice.CheckUsername().subscribe(data =>{
       this.userArray = data;
+      console.log(this.userArray[0].Username);
+      console.log(user);
       for(let i=0; i<=this.userArray.length; i++)
       {
         if(this.userArray[i].Username==user)
         {
+          console.log("dsds");
           this.isvalid = true;
           break;
         }
@@ -47,12 +55,13 @@ export class LoginComponent implements OnInit {
           this.isvalid = false;
         }
       }
-    });
-    if(this.isvalid)
+      if(this.isvalid)
     {
       console.log("ffgfhg");
       this.dataservice.ResetPasswordmail(user).subscribe();
     }
+    });
+    
   }
   forgotpassword()
   {

@@ -7,7 +7,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AngularHUB';
+  title = 'ProjectAllotment';
   showHeader = true;
   showFooter = true;
 

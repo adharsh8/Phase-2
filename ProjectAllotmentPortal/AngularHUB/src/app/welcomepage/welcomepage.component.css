@@ -3,27 +3,29 @@
     position: relative;
     width: 60%;
     left: 12em;
-    top:3em;
+    top:2em;
     
 }
 .card
 {
-    box-shadow: 10px 10px 5px grey;
+    bottom: 0.8em;    
     text-align: center;
     position: relative;
-    background-color:rgba(218, 214, 214, 0.822);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5);
 }
 .personimage
 {
     position: relative;
-    height: 80%;
-    width: 65%;
+    height: 90%;
+    width: 75%;
     right: 12em;
-    bottom: 3em;
+    bottom: 2em;
 }
 .name{
     font-weight: bold;
-    font-size: 22px;
+    font-size: 30px;
+    bottom: 0.5em;
+    position: relative;
 }
 h6{
     font-weight: bold;

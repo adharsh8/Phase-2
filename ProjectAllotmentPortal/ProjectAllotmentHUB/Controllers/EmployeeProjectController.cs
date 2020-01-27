@@ -139,7 +139,7 @@ namespace ProjectAllotmentHUB.Controllers
         [HttpGet]
         // [EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("api/GetEmpNonProject/{name}")]
-        //[Authorize]
+        [Authorize]
         public IHttpActionResult GetNonProjEmployee(string name)                  //Get all non selected project for Employees
         {
             try

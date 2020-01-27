@@ -13,7 +13,34 @@
             </div>  
             <div *ngSwitchDefault><img class="personimage" src="../../assets/sugitra.jpg" ></div>  
         </div>  
-        <!--  <div *ngIf ="userClaims.COEname === 'Srivatsan'">
+
+          <h6>Username:{{userClaims.Username}}</h6>
+          <h6>E-Mail ID: {{userClaims.COEmailId}}</h6>
+          <h6>Department: {{userClaims.StreamName}}</h6>
+        
+        </div>
+      </div>
+      
+    </div>
+    <mat-card>
+      <div>
+        <h5>Welcome, to Project Allotment Portal !</h5>
+
+        <div [ngSwitch]="value">
+          <div *ngSwitchCase="'Good Morning'"><img class="greetingimage" src="../../assets/Morning.PNG" >
+          </div> 
+          <div *ngSwitchCase="'Good Afternoon'"><img class="greetingimage" src="../../assets/noon.PNG" >
+          </div> 
+          <div *ngSwitchCase="'Good Evening'"><img class="greetingimage" src="../../assets/evening.PNG" >
+          </div> 
+
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+
+          <!--  <div *ngIf ="userClaims.COEname === 'Srivatsan'">
         <img class="personimage" src="../../assets/Srivathsan-Santhanam.jpg" >
         </div>
         <div *ngif= "userClaims.COEname ==='Srinithi'">
@@ -22,12 +49,3 @@
         <ng-template #other_image >
           <img class="personimage" src ="../../assets/srinidhi.jpg">
         </ng-template>-->
-          <h6>Username:{{userClaims.Username}}</h6>
-          <h6>Mail ID: {{userClaims.COEmailId}}</h6>
-          <h6>Department: {{userClaims.StreamName}}</h6>
-        
-        </div>
-      </div>
-      
-    </div>
-  </div>

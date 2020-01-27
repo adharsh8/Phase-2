@@ -30,6 +30,7 @@ import { FieldErrorDisplayModule } from './field-error-display/field-error-displ
 import { AvatarModule } from 'ngx-avatar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/m
     WelcomepageComponent,
     StatusModalComponent,
     ChartComponent,
+    ResetpasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,7 @@ import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/m
     MatMomentDateModule
    
   ],
-  providers: [ AuthGuard, {
+  providers: [ AuthGuard,{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

@@ -97,7 +97,7 @@ namespace ProjectAllotmentHUB.HelperClass
             })
                 smtp.Send(message);
         }
-        public static void ForgotPassword(string MailId, Stream user)
+        public static void ForgotPassword(string MailId, string user)
         {
             var fromEmail = new MailAddress("generateemail2019@gmail.com", "HR HUB");
             var toEmail = new MailAddress(MailId);
@@ -105,7 +105,7 @@ namespace ProjectAllotmentHUB.HelperClass
 
            var subject = "Reset Password";
            var body = "Hi,<br/><br/>We got request for reset your account password. Please click on the below link to reset your password" +
-                "<br/><br/><a href=" + "http://localhost:4200/reset/" + user.Username + ">Reset Password link</a>";
+                "<br/><br/><a href=" + "http://localhost:4200/resetpassword/" + user + ">Reset Password link</a>";
 
             var smtp = new SmtpClient
             {

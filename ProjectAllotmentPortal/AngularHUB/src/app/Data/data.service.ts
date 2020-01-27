@@ -17,6 +17,7 @@ export class DataService {
   private Url = 'https://localhost:44367/api/';
   private UImessage = new Subject<string>();
   UImsg$ = this.UImessage.asObservable();
+   token =localStorage.getItem('userToken');
 
   private streamType = new Subject<string>();
   strType$ = this.streamType.asObservable();
@@ -33,7 +34,7 @@ export class DataService {
   }
     ResetPasswordmail(user):Observable<string>{
       const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-      return this.http.post<string>(this.Url +'SendResetPassword/'+user ,httpOptions);
+      return this.http.post<string>(this.Url +'resetPasswordlink/'+user ,httpOptions);
     }
     getdisplayEmployee(name): Observable<DisplayProject[]> {
       
@@ -43,12 +44,13 @@ export class DataService {
       return this.http.get(this.Url + 'CheckUsername');
     }
     getEmployeeProj(name): Observable<EmployeeProject []>{
-      
+     // var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','Bearer Token':this.token });
+    // ,{headers: reqHeader }
       return this.http.get<EmployeeProject []>(this.Url +'GetEmpNonProject/'+name);
     }
     userAuthentication(userName,password){
       var data = "username=" + userName + "&password=" + password + "&grant_type=password";
-    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
+      var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
     
     return this.http.post('https://localhost:44367/token', data, { headers: reqHeader });
     }
@@ -56,6 +58,9 @@ export class DataService {
       return this.http.get(this.Url + 'GetUserClaims');
       
     }
+  /* DisplayWelcomeCard(userid){
+      return this.http.get(this.Url + 'GetWelcomeCard/'+userid);
+    } */
     getEmployeestream(): Observable<EmployeeStream[]> {
       return this.http.get<EmployeeStream[]>(this.Url +'GetEmployeeStream');
     }

@@ -13,6 +13,7 @@ namespace ProjectAllotmentHUB.Controllers
 {
     public class EmployeeController : ApiController
     {
+        [Authorize]
         [HttpGet]
         [Route("api/GetEmployee")]
         [ResponseType(typeof(Employee))]

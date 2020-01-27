@@ -58,7 +58,32 @@ namespace ProjectAllotmentHUB.Controllers
             };
             return stream;
             }
+        [HttpGet]
+        [Route ("api/GetWelcomeCard/{user}")]
+        public IHttpActionResult GetWelcomeCard(string user)
+        {
+            try
+            {
+                using(ProjectAllocationDBEntities entity =new ProjectAllocationDBEntities())
+                {
+                    var Displaydetails = (from str in entity.Streams.Where(e => e.Username == user)
+                                          select new
+                                          {
+                                              str.Username,
+                                              str.COEname,
+                                              str.COEmailId,
+                                              str.StreamName
+                                          }).ToList();
 
+                    return Ok(Displaydetails);
+                }
+            }
+            catch(Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
         [HttpGet]
         [Route ("api/CheckUsername")]
         public IHttpActionResult CheckUsername()
@@ -84,14 +109,14 @@ namespace ProjectAllotmentHUB.Controllers
             }
         }
         [HttpPost]
-        [Route ("api/resetPasswordlink")]
-        public IHttpActionResult ForgotPassword([FromBody]Stream user)
+        [Route ("api/resetPasswordlink/{user}")]
+        public IHttpActionResult ForgotPassword(string user)
         {
             try
             {
                 using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
                 {
-                    string MailId = entity.Streams.FirstOrDefault(e => e.Username == user.Username).COEmailId;
+                    string MailId = entity.Streams.FirstOrDefault(e => e.Username == user).COEmailId;
                     EmailGeneration.ForgotPassword(MailId, user);
                 }
                 return Ok("Mail Sent Successfully");
