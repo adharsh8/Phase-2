@@ -57,9 +57,7 @@ export class ProjectComponent implements OnInit {
         });
 
   }
-
- 
-
+  
   OnSumbit(empproj)
   {
     this.allotment.EmployeeStream_Id = empproj.EmployeeStream_Id;

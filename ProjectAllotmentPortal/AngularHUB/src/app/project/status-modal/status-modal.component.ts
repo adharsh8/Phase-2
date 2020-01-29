@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { EmployeeProject } from 'src/app/Data/EmployeeProject';
 import { DataService } from 'src/app/Data/data.service';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 
 interface Status
@@ -35,7 +36,8 @@ export class StatusModalComponent{
     public dialogRef: MatDialogRef<StatusModalComponent>,
     //@Optional() is used to prevent error if no data is passed
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Status, private form: FormBuilder,private router: Router,
-                        private dataservice : DataService,private _snackBar: MatSnackBar) {
+                        private dataservice : DataService,private _snackBar: MatSnackBar,
+                        @Inject(DOCUMENT) private _document: Document) {
 
       console.log(data);
       this.local_data = {...data};
@@ -69,6 +71,7 @@ export class StatusModalComponent{
       horizontalPosition: 'right'
     });
     this.router.navigate(['project']);
+    //this._document.defaultView.location.reload();
   }
  
   closeDialog(){

@@ -25,8 +25,9 @@
             <ngx-avatar src="../../../assets/sugitra.jpg" size="40"  [matMenuTriggerFor]="beforeMenu" ></ngx-avatar>
         </div>
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="drop-btn">
-            <button mat-menu-item><a href='https://www.google.com/intl/en-GB/gmail/about/#'>My Account</a></button>
-            <button mat-menu-item (click)="Logout()">Log Out</button>
+            <button mat-menu-item><a class="btns" href='https://www.google.com/intl/en-GB/gmail/about/#'>My Account</a></button>
+            <button mat-menu-item class="btns" (click)="ChangePassword()">Change Password</button>
+            <button mat-menu-item class="btns" (click)="Logout()">Log Out</button>
           </mat-menu>
     </div>
     </mat-toolbar-row>

@@ -1,0 +1,40 @@
+h5
+{
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    font-size: 25px;
+}
+.content
+{
+    
+    color: black;
+    position: relative;
+    
+}
+p{
+    font-size: 18px;
+    text-align: center;
+}
+.modal
+{
+    position: relative;
+    overflow: hidden;
+}
+.btn
+{
+    top:1em;
+    position: relative;
+    text-align: center;
+}
+.button1
+{
+    position: relative;
+    right:  2em;
+    
+}
+.button2
+{
+    position: relative;
+    left: 2em;
+}

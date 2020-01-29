@@ -120,7 +120,7 @@ namespace ProjectAllotmentHUB.Controllers
 
                         return Ok("Employee Status has  Updated Successfully");
                     }
-                    else if(emp.Employee.StatusInfo == "Deployed")
+                    else if(emp.Employee.StatusInfo == "Deployed" || emp.Employee.StatusInfo == "Reallocate")
                     {
                         emp.Employee.StatusInfo = status.StatusInfo;
                         entity.SaveChanges();

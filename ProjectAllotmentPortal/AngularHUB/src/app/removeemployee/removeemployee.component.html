@@ -1,0 +1,12 @@
+<body class="modal">
+    <div>
+        <h5>REMOVE EMPLOYEE</h5>
+    </div>
+    <div class="content">
+        <p>Do you wish to remove {{name}} from the Organisation? </p>
+    </div>
+    <div class="btn">
+        <button class="button1" mat-button (click)="doAction()" mat-raised-button color="primary">{{action}}</button>
+        <button class="button2" mat-button (click)="closeDialog()" mat-raised-button color="warn">Cancel</button>
+    </div>
+</body>

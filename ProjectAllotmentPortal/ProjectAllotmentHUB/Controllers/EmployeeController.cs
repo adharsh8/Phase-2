@@ -13,11 +13,11 @@ namespace ProjectAllotmentHUB.Controllers
 {
     public class EmployeeController : ApiController
     {
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         [Route("api/GetEmployee")]
         [ResponseType(typeof(Employee))]
-        public IHttpActionResult Get()                 //Get All Employee Details not Allocated Streams
+        public IHttpActionResult Get()            //Get All Employee Details not Allocated Streams
         {
             try
             {
@@ -135,6 +135,41 @@ namespace ProjectAllotmentHUB.Controllers
                 return BadRequest();
             }
         }
-      
+        [HttpPut]
+        [Route("api/RemoveEmployeeStatus/{id=id}")]
+        public IHttpActionResult RemoveEmployee(int id, [FromBody] Employee status)    //Modify EmployeeStatus
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                using (ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
+                {
+                    var emp = entity.EmployeeStreams.FirstOrDefault(e => e.EmployeeStream_Id == id);
+
+                    if (emp == null)
+                    {
+                        return NotFound();
+                    }
+                
+                    else
+                    {
+                        emp.Employee.StatusInfo = status.StatusInfo;
+
+                        entity.SaveChanges();
+
+                        return Ok("Employee Removed Successfully !");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
+
     }
 }

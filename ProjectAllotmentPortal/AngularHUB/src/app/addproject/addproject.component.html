@@ -5,7 +5,7 @@
     <mat-card-header>
         <h4 class="header">PROJECT ALLOCATION</h4>
   </mat-card-header>
-<div class = "project-container" *ngIf= "ProjectStatus == 'Allocated';else otherStatus" >
+<div class = "project-container" *ngIf= "ProjectStatus == 'Allocated' || ProjectStatus == 'Deployed'" >
     <i class="material-icons" id="goback" (click)="back()">
         arrow_back
         </i>
@@ -69,18 +69,21 @@
                 </tbody>
             </table>
         </mat-card-content>
-        <mat-card-actions>
+        <mat-card-actions *ngIf = "ProjectStatus == 'Allocated'">
             <button [disabled]="!ProjectForm.valid" mat-raised-button color="primary" class="btn1" type="submit" (click)="onSubmit()" >Submit</button>
+            <button  mat-raised-button color="warn" class="btn2" (click)="reset()" type="reset">Clear</button>
+         </mat-card-actions>
+         <mat-card-actions *ngIf = "ProjectStatus == 'Deployed'">
+            <button [disabled]="!ProjectForm.valid" mat-raised-button color="primary" class="btn1" type="submit" (click)="onUpdate()" >Submit</button>
             <button  mat-raised-button color="warn" class="btn2" (click)="reset()" type="reset">Clear</button>
          </mat-card-actions>
     </form>
 
 </div>
-<ng-template #otherStatus>
-    <form [formGroup]="ProjectForm" autocomplete="off">
-        <i class="material-icons" id="goback" (click)="back()">
-            arrow_back
-            </i>
+<!--<ng-template #otherStatus>   ;else otherStatus-->
+  
+    <form [formGroup]="ProjectForm" *ngIf= "ProjectStatus == 'Reallocate'" autocomplete="off">
+
     <mat-card-content>
         <table class="table">
             <tbody>
@@ -129,9 +132,48 @@
     </mat-card-content>
     <mat-card-actions>
         <button  mat-raised-button color="primary" class="btns1" type="submit" (click)="onModify()" >Submit</button>
-    <!--<button  mat-raised-button color="warn" class="btns2" (click)="resetTodate()" type="reset">Clear</button>-->
+        <button  mat-raised-button color="warn" class="btns2" (click)="goBack()" type="reset">Back</button>
      </mat-card-actions>
 </form>
-</ng-template>
+<!--</ng-template>
+<div *ngIf = "ProjectStatus == 'Deployed'">
+    <form>
+        <mat-card-content>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row"></th>
+                        <td class="proj2">
+                             <mat-form-field appearance="outline" >     
+                               <input matInput  placeholder="Project Name" value="{{prjname}}">
+                                <mat-label >Project Name</mat-label>
+                              </mat-form-field> 
+                        </td>
+    
+                        <td class="role2">
+                            <mat-form-field  appearance="outline" >     
+                                <input matInput  placeholder="Role Name" value="{{rolename}}">
+                                 <mat-label >Role Name</mat-label>
+                               </mat-form-field> 
+                        </td>
+                      
+                    </tr><br>
+                    <tr>
+                        <th scope="row"></th>
+                        <td class="fromdate2">
+                            <mat-form-field  appearance="outline" >     
+                                <input matInput  placeholder="From Date" value="{{begindate | date:'mediumDate'}}">
+                                 <mat-label >From Date</mat-label>
+                               </mat-form-field> 
+                              
+                        </td>
+             
+                      </tr>
+                </tbody>
+            </table>
+        </mat-card-content>
+
+    </form>
+</div>-->
 </mat-card>
 </body>

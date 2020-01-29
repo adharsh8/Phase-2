@@ -4,6 +4,7 @@ import { DataService } from '../Data/data.service';
 import { Router } from '@angular/router';
 import { ChartComponent } from '../chart/chart.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { RemoveemployeeComponent } from '../removeemployee/removeemployee.component';
 
 @Component({
   selector: 'app-stream',
@@ -13,6 +14,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 
 export class StreamComponent implements OnInit {
   ngOnInit(): void {
+  
     this.dataservice.getEmployeestream().subscribe(
       data => {  this.dataSource=new  MatTableDataSource(data) as any ;
         console.log(this.dataSource);
@@ -22,19 +24,27 @@ export class StreamComponent implements OnInit {
     )
   }
 
-  constructor(private dataservice : DataService, private router: Router,public dialog: MatDialog ){}
-  displayedColumns: string[] = ['employeename', 'employeeid', 'DOJ', 'MailId', 'Phno','streamname','status'];
+  constructor(private dataservice : DataService, private router: Router,public dialog: MatDialog,
+     ){}
+  displayedColumns: string[] = ['employeename', 'employeeid', 'DOJ', 'MailId','streamname','status','action'];
   dataSource = new MatTableDataSource();
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  
+  openDialog(action,obj)
+  {
+    obj.action = action;
+    const dialogRef = this.dialog.open(RemoveemployeeComponent, {
+      width: '30em',
+      height: '250px',
+      data:obj
+      
+    });
+  }
   chart(streamChart : string)
   {
     localStorage.setItem('chartType',streamChart);
-   // this.router.navigate(['chart']);
-
     const dialogRef = this.dialog.open(ChartComponent, {
       width: '850px',
       height : '550px'

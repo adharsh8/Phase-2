@@ -16,12 +16,13 @@ namespace ProjectAllotmentHUB.HelperClass
                 using (ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
                 {
                     user = entity.Streams.Where(u => u.Username == username).FirstOrDefault();
+                    var hashPass = Hashing.Hash(password);
                     if (user != null)
                     {
-                        if (string.Compare((password), user.Password) == 0)
+                        if (string.Compare((hashPass), user.Password) == 0)
                         {
                             LogFile.LoginLog(user);
-                            return "Login Successful!";
+                            return "Success";
 
                         }
                         else

@@ -11,9 +11,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
   isLoginError : boolean = false;
-  isForgotPassword :boolean = true;
+ // isForgotPassword :boolean = true;
   userArray : any;
   isvalid : boolean =false;
+  show : boolean = true;
   
   constructor(private dataservice : DataService, private router : Router) { }
 
@@ -37,7 +38,11 @@ export class LoginComponent implements OnInit {
       this.isLoginError = true;
     });
   }
-  usernameSubmit(user)
+  password()
+  {
+    this.show = !this.show;
+  }
+/*  usernameSubmit(user)
   {
     this.dataservice.CheckUsername().subscribe(data =>{
       this.userArray = data;
@@ -66,5 +71,6 @@ export class LoginComponent implements OnInit {
   forgotpassword()
   {
     this.isForgotPassword = false;
-  }
+  }*/
+
 }

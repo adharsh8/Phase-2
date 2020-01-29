@@ -8,10 +8,10 @@
 }
 body
 {
-    background-image: url(../../assets/bg7.jpg);
+    background-image: url(../../assets/bgnew.jpg);
     height: 100vh;
     background-repeat: no-repeat;
-    
+    background-size: 1370px 770px;
     overflow: hidden;
     position: relative;
 }

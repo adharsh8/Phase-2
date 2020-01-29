@@ -31,6 +31,7 @@ import { AvatarModule } from 'ngx-avatar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { RemoveemployeeComponent } from './removeemployee/removeemployee.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     StatusModalComponent,
     ChartComponent,
     ResetpasswordComponent,
+    RemoveemployeeComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,7 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent, StatusModalComponent]
+  entryComponents: [ModalComponent, StatusModalComponent,RemoveemployeeComponent]
 })
 export class AppModule {
 }

@@ -27,5 +27,13 @@
 {
     cursor: pointer;
 }
-
+.btns:hover
+{
+    background-color:white;
+}
+.btns
+{
+    text-decoration: none;
+    color: black;
+}
 

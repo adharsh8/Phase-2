@@ -80,7 +80,7 @@ export class AddprojectComponent implements OnInit {
 
       this.ProjectStatus = (localStorage.getItem('Project-status'));
       this.ProjectId = JSON.parse(localStorage.getItem('Project-Id'));
-      if(this.ProjectStatus=='Reallocate')
+      if(this.ProjectStatus=='Reallocate' || this.ProjectStatus == 'Deployed')
       {
         this.datum.getSingleEmployee(this.ProjectId).subscribe(
           data =>{
@@ -173,6 +173,10 @@ export class AddprojectComponent implements OnInit {
   reset(){
     this.ProjectForm.reset();
   }
+  goBack()
+  {
+    this.routers.navigate(['display-project']);
+  }
   onModify()
   {
    
@@ -205,6 +209,24 @@ export class AddprojectComponent implements OnInit {
     this.ID = this.allotments.EmployeeStream_Id;
     this.datum.UpdateDashboard(this.ID).subscribe();
         
+  }
+  onUpdate()
+  {
+    if(this.ProjectForm.valid){
+      this.updatevalue();
+    }
+  }
+  updatevalue()
+  {
+    this.allotments.Project_Id = this.ProjectForm.get('ProjectName').value.projectId;
+    this.allotments.StartDate = this.ProjectForm.get('fromDate').value;
+    this.allotments.EndDate = this.ProjectForm.get('toDate').value;
+    this.allotments.Roles_Id = this.ProjectForm.get('Roletype').value.rolesid;
+    
+    this.datum.UpdateProjectDetails(this.prjId,this.allotments).subscribe(
+
+    );
+
   }
   openSnackBar(message: any, action: string) {
       this._snackBar.open(message, action, {

@@ -108,6 +108,60 @@ namespace ProjectAllotmentHUB.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet]
+        [Route ("api/Checkpassword/{id=id}")]
+        public IHttpActionResult CheckPassword(string id, string password)
+        {
+            try
+            {
+                using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
+                {
+                    var hashedpassword = Hashing.Hash(password);
+                    var result = DbOperations.ValidateLogin(id, password, out Stream user);
+                    return Ok(result);
+                }
+            }
+            catch(Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
+        [HttpPut]
+        [Route ("api/ChangePassword/{id=id}")]
+        public IHttpActionResult ChangePassword(string id, string Password)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                using (ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
+                {
+                    var employee = entity.Streams.FirstOrDefault(e => e.Username == id);
+
+                    var hashedPassword = Hashing.Hash(Password);
+
+                    if (employee == null)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        employee.Password = hashedPassword;
+                        entity.SaveChanges();
+
+                        return Ok("Password has updated Successfully !");
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
         [HttpPost]
         [Route ("api/resetPasswordlink/{user}")]
         public IHttpActionResult ForgotPassword(string user)

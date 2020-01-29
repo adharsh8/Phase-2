@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../Data/data.service';
-//import moment from 'moment';
 
 @Component({
   selector: 'app-welcomepage',
@@ -32,21 +31,16 @@ export class WelcomepageComponent implements OnInit {
     console.log(this.value);
   }
   greetingText = () => {
-    /*const now = moment();
-    const currentHour = now.hour()
-      if (currentHour >= 12 && currentHour <=17) return "Good Afternoon "
-      else if (currentHour >= 18) return "Good Evening "
-      else return "Good Morning "*/
-
+   
       this.CurrentHour = new Date().getHours();
       if(this.CurrentHour >=12 && this.CurrentHour <=17)
       {
-        console.log("dsdasd");
+        
         return "Good Afternoon";
       }
       else if(this.CurrentHour >= 18)
       {
-        console.log("dsdasd123");
+        
         return "Good Evening";
       }
       else{

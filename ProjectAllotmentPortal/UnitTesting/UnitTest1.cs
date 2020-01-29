@@ -11,7 +11,7 @@ namespace UnitTesting
         [TestMethod]
         public void ValidLoginCredentials()
         {
-            var output = "Login Successful!";
+            var output = "Success";
             var logintest = DbOperations.ValidateLogin("P001", "asd123", out Stream user);
             Assert.AreEqual(output, logintest);
         }

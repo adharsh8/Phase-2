@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<body>
 <div class="row" *ngIf ="userClaims">
   
     <div class="col s12 m7">
@@ -22,22 +23,26 @@
       </div>
       
     </div>
-    <mat-card>
-      <div>
-        <h5>Welcome, to Project Allotment Portal !</h5>
+    
+      <div class= "greeting-card">
+        <h5 class="greeting-msg">Welcome, to Project Allotment Portal !</h5>
 
         <div [ngSwitch]="value">
-          <div *ngSwitchCase="'Good Morning'"><img class="greetingimage" src="../../assets/Morning.PNG" >
+          <div  *ngSwitchCase="'Good Morning'"><img class="greetingimage" src="../../assets/Morning.PNG" >
+            <h6 class="day">GOOD MORNING !</h6>
           </div> 
-          <div *ngSwitchCase="'Good Afternoon'"><img class="greetingimage" src="../../assets/noon.PNG" >
+          <div  *ngSwitchCase="'Good Afternoon'"><img class="greetingimage" src="../../assets/noon.PNG" >
+            <h6 class="day">GOOD AFTERNOON !</h6>
           </div> 
           <div *ngSwitchCase="'Good Evening'"><img class="greetingimage" src="../../assets/evening.PNG" >
+            <h6 class="day">GOOD EVENING !</h6>
           </div> 
 
         </div>
       </div>
-    </mat-card>
+   
   </div>
+</body>
 
 
           <!--  <div *ngIf ="userClaims.COEname === 'Srivatsan'">

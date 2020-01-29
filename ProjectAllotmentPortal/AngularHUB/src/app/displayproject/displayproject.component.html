@@ -1,6 +1,7 @@
 <body class="content">
 <mat-card class="dashboardCard">
-<button mat-raised-button color="primary" class="btn1" type="submit" (click)="chart('projectchart')" >View Chart</button>
+<button mat-raised-button color="primary" class="btn1" type="submit" (click)="chart('projectchart')" ><mat-icon matSuffix >visibility</mat-icon>   Chart</button>
+
 <mat-form-field class="filters" appearance="outline">
   <mat-icon matSuffix>search</mat-icon>
   <mat-label >Search</mat-label>
@@ -61,6 +62,12 @@
         
         </ng-template>
       </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell class="tablehead" *matHeaderCellDef> Action </th>
+        <td mat-cell class="tablecontent" *matCellDef="let element"><mat-icon class="edit" (click)="onEdit(element)">
+        edit</mat-icon> </td>
       </ng-container>
       
     <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>

@@ -4,6 +4,10 @@
     position: relative;
     max-height: 400px;
     overflow-y: auto;
+    
+  }
+  table{
+    width: 100%;
   }
   .stream-card
   {

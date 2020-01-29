@@ -32,6 +32,12 @@ export class DataService {
     return this.http.post<ProjectAllotment[]>(this.Url + 'PostEmployeeProject',  
     employee);  
   }
+  UpdateProjectDetails(id:number,employee:ProjectAllotment): Observable<ProjectAllotment []>{
+    console.log("dsdsd");
+        const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };  
+        return this.http.put<ProjectAllotment[]>(this.Url + 'UpdateProjectDetails/'+ id,  
+        employee,httpOptions);
+  }
     ResetPasswordmail(user):Observable<string>{
       const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
       return this.http.post<string>(this.Url +'resetPasswordlink/'+user ,httpOptions);
@@ -58,9 +64,6 @@ export class DataService {
       return this.http.get(this.Url + 'GetUserClaims');
       
     }
-  /* DisplayWelcomeCard(userid){
-      return this.http.get(this.Url + 'GetWelcomeCard/'+userid);
-    } */
     getEmployeestream(): Observable<EmployeeStream[]> {
       return this.http.get<EmployeeStream[]>(this.Url +'GetEmployeeStream');
     }
@@ -76,7 +79,20 @@ export class DataService {
     GetRoleType():Observable<string[]>{
       return this.http.get<string[]>(this.Url+ 'GetRolesdetails');
     }
-    
+    CheckPassword(user,pass):Observable<any>{
+     
+      return this.http.get(this.Url + 'Checkpassword/'+user+'?password='+pass);
+    }
+    statusRemove : object;
+    RemoveEmployee(id:number){
+
+        this.statusRemove={
+          StatusInfo : "Removed"
+        }
+        const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
+      return this.http.put(this.Url + 'RemoveEmployeeStatus/'+ id ,this.statusRemove, httpOptions); 
+
+    }
     statusUpd : object;
     UpdateEmployeeProjStatus(id:number, status:string)
     {
@@ -96,6 +112,12 @@ export class DataService {
       const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) }; 
       
       return this.http.put(this.Url + 'PutEmployeeDashboard/'+ id ,this.statusUpdat, httpOptions); 
+    }
+    ChangePassword(user,newpassword)
+    {
+      const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+
+      return this.http.put(this.Url + 'ChangePassword/'+ user+'?Password='+newpassword,httpOptions);
     }
     GetProjectChart(department:string)
     {

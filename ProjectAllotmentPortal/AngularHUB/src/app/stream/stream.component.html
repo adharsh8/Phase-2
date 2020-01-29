@@ -1,7 +1,7 @@
 
 <mat-card class='dashboard-card'>
 <button mat-raised-button color="primary" 
- class="btn1" [matMenuTriggerFor]="beforeMenu">View Chart</button>
+ class="btn1" [matMenuTriggerFor]="beforeMenu"><mat-icon matSuffix >visibility</mat-icon>  Chart</button>
 <mat-menu #beforeMenu="matMenu" xPosition="before">
   <button mat-menu-item (click)="chart('streamChart')"  matTooltip="View Stream chart" matTooltipPosition ="right">STREAM</button>
   <button mat-menu-item (click)="chart('statusChart')" matTooltip="View Status chart" matTooltipPosition ="right">STATUS</button>
@@ -37,11 +37,6 @@
       <td mat-cell class="tablecontent"  *matCellDef="let element"> {{element.EmployeeMailId}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="Phno">
-      <th mat-header-cell class="tablehead" *matHeaderCellDef> Phone Number</th>
-      <td mat-cell class="tablecontent"  *matCellDef="let element"> {{element.EmployeePhno}} </td>
-    </ng-container>
-
     <ng-container matColumnDef="DOJ">
       <th mat-header-cell class="tablehead" *matHeaderCellDef> Date of Joining</th>
       <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.DOJ | date:'mediumDate'}} </td>
@@ -52,8 +47,15 @@
       <td mat-cell class="tablecontent" *matCellDef="let element"> {{element.StatusInfo}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="action">
+      <th mat-header-cell class="tablehead" *matHeaderCellDef>Action</th>
+      <td mat-cell class="tablecontent" *matCellDef="let element"> <mat-icon (click)="openDialog('Remove',element)">
+        delete_forever</mat-icon> </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;let element"
+    [ngClass]="{'make-red':element.StatusInfo == 'Removed'}"></tr>
   </table>
 </div>
 </body>

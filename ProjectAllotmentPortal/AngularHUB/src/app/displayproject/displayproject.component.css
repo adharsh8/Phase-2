@@ -28,7 +28,7 @@ table{
  
 }
 .make-red{
-  background-color: lightcoral;
+  background-color: #ef9a9a;
 }
 
 .btn1
@@ -65,4 +65,8 @@ table{
   color: black;
   background-color: #bdbdbd;
   text-align: center;
+}
+.edit
+{
+  cursor: pointer;
 }

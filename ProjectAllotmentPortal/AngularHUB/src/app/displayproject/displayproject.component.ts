@@ -3,7 +3,6 @@ import { MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
 import {DataService} from 'src/app/Data/data.service';
 import { Router } from '@angular/router';
 import { ChartComponent } from '../chart/chart.component';
-import { DatePipe } from '@angular/common';
 import { EmployeeProject } from '../Data/EmployeeProject';
 
 @Component({
@@ -17,7 +16,7 @@ export class DisplayprojectComponent implements OnInit {
   constructor(private display : DataService, private router : Router,public dialog: MatDialog,
     private _snackBar: MatSnackBar) { }
 
-  displayedColumns: string[] = [ 'name', 'EmpId','stream', 'ProjectName','startdate','enddate','role','status'];
+  displayedColumns: string[] = [ 'name', 'EmpId','stream', 'ProjectName','startdate','enddate','role','status','action'];
   dataSource = new MatTableDataSource();
   streamName : any;
   Id : number;
@@ -87,6 +86,12 @@ ExtendProject(value)
   localStorage.setItem('Project-status',value.StatusInfo);
   this.router.navigate(['add-project']);
 }
-
+onEdit(editEmployee)
+{
+  localStorage.setItem('Project-Id',editEmployee.EmployeeStream_Id);
+  localStorage.setItem('Project-status',editEmployee.StatusInfo);
+  this.router.navigate(['add-project']);
+  
+}
 
 }

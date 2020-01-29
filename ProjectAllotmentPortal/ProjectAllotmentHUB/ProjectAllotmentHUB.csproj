@@ -240,6 +240,7 @@
     <Compile Include="HelperClass\AuthorizationServerProvider.cs" />
     <Compile Include="HelperClass\DbOperations.cs" />
     <Compile Include="HelperClass\EmailGeneration.cs" />
+    <Compile Include="HelperClass\Hashing.cs" />
     <Compile Include="HelperClass\LogFile.cs" />
     <Compile Include="HelperClass\StartupOwin.cs" />
     <Compile Include="Models\Employee.cs">

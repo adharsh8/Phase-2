@@ -139,7 +139,7 @@ namespace ProjectAllotmentHUB.Controllers
         [HttpGet]
         // [EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("api/GetEmpNonProject/{name}")]
-        [Authorize]
+       // [Authorize]
         public IHttpActionResult GetNonProjEmployee(string name)                  //Get all non selected project for Employees
         {
             try
@@ -152,7 +152,7 @@ namespace ProjectAllotmentHUB.Controllers
                     var nonprojlist = streamlist.Except(projlist).ToList();
 
                     var listofEmployee = (from es in entity.EmployeeStreams.Where(e => nonprojlist.Contains(e.EmployeeStream_Id)
-                                          && name == e.Stream.StreamName)
+                                          && name == e.Stream.StreamName && e.Employee.StatusInfo != "Removed")
                                           join str in entity.Streams on es.Stream_Id equals str.Stream_Id
 
                                           select new
@@ -224,6 +224,43 @@ namespace ProjectAllotmentHUB.Controllers
                 }
             }
             catch (Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
+        [HttpPut]
+        [Route ("api/UpdateProjectDetails/{id=id}")]
+        public IHttpActionResult UpdateProjectDetails(int id, [FromBody] EmployeeProject projDetails)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
+                {
+                    var emp = entity.EmployeeProjects.FirstOrDefault(e => e.EmployeeProject_Id == id);
+
+                    if (emp == null)
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        emp.Project_Id = projDetails.Project_Id;
+                        emp.Roles_Id = projDetails.Roles_Id;
+                        emp.StartDate = projDetails.StartDate;
+                        emp.EndDate = projDetails.EndDate;
+
+                        entity.SaveChanges();
+
+                        return Ok("Project Details Updated Successfully !");
+                    }
+                }
+            }
+            catch(Exception ex)
             {
                 LogFile.WriteLog(ex);
                 return BadRequest();

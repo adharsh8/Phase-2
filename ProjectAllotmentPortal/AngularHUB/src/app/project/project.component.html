@@ -43,7 +43,7 @@
       <ng-container matColumnDef="Add Project">
         <th mat-header-cell class="tablehead" *matHeaderCellDef> Allocate </th>
         <td mat-cell class="tablecontent" *matCellDef="let element">
-          <button mat-button [disabled]="element.StatusInfo == 'Waiting for Allocation'"
+          <button mat-button [disabled]="element.StatusInfo == 'Waiting for Allocation' || element.StatusInfo == 'Reallocate' || element.StatusInfo == 'Deployed'"
           matTooltip="Allocate Project" matTooltipPosition ="right"
           (click)="OnSumbit(element)" mat-raised-button color="primary">ADD PROJECT</button>
       </ng-container>
