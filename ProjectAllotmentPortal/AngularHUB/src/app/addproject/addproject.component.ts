@@ -224,7 +224,8 @@ export class AddprojectComponent implements OnInit {
     this.allotments.Roles_Id = this.ProjectForm.get('Roletype').value.rolesid;
     
     this.datum.UpdateProjectDetails(this.prjId,this.allotments).subscribe(
-
+      results =>  this.openSnackBar(results,'Close'),
+      error =>  this.openSnackBar(error.error.message,'Close')
     );
 
   }

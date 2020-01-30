@@ -65,12 +65,21 @@ export class ResetpasswordComponent implements OnInit {
     this.newpass = this.setPasswordForm.get('newpassword').value;
     this.confrmpass = this.setPasswordForm.get('confirmPassword').value;
     this.userId =localStorage.getItem('userId');
+    if(this.newpass == this.confrmpass)
+    {
+      console.log("true");
     this.dataservice.ChangePassword(this.userId,this.newpass).subscribe(
       
       results =>  this.openSnackBar(results.toString(),'Close'),
       error =>  this.openSnackBar(error.error.message,'Close')
     );
       this.router.navigate(['welcomepage']);
+    }
+    else
+    {
+      console.log("false");
+      this.openSnackBar('Password doesnot Matches','Close');
+    }
   }
   applyFilter(filterValue: string) {
     this.newpass = this.setPasswordForm.get('newpassword').value; 

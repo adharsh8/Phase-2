@@ -57,7 +57,7 @@ export class DataService {
     userAuthentication(userName,password){
       var data = "username=" + userName + "&password=" + password + "&grant_type=password";
       var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
-    
+       
     return this.http.post('https://localhost:44367/token', data, { headers: reqHeader });
     }
     getWelcomePage(){

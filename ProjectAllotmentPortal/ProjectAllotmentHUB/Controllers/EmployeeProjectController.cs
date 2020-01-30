@@ -107,7 +107,7 @@ namespace ProjectAllotmentHUB.Controllers
                 using (ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
                 {
                     var details = (from empproj in entity.EmployeeProjects.Where(e => name == e.EmployeeStream.Stream.StreamName
-                                   && today <= e.EndDate)
+                                   && today <= e.EndDate && e.EmployeeStream.Employee.StatusInfo != "Removed")
                                    join es in entity.EmployeeStreams on empproj.EmployeeStream_Id equals es.EmployeeStream_Id
                                    join emp in entity.Employees on es.Employee_Id equals emp.Employee_Id
                                    join str in entity.Streams on es.Stream_Id equals str.Stream_Id

@@ -43,25 +43,26 @@ namespace ProjectAllotmentHUB.Controllers
                                                
                                            }) ;
 
-                    //string MailId = entity.Streams.Where(e => e.Stream_Id == 1001 ).Select(
-                    //                e => new
-                    //                {
+                    string MailId = entity.Streams.Where(e => e.Stream_Id == 1001).Select(
+                                    e => new
+                                    {
 
-                    //                    Mail = e.COEmailId
+                                        Mail = e.COEmailId
 
-                    //                }).FirstOrDefault().Mail;
-                    //var trigger = entity.Employees.Where(e =>(EntityFunctions.DiffDays(e.DOJ,today)>=5)).Select(e =>
-                    //new {
-                    //        employeename = e.EmployeeName,
-                    //        //employeemail = e.EmployeeMailId
-                    //    }).ToList();
+                                    }).FirstOrDefault().Mail;
+                    var trigger = entity.Employees.Where(e => (EntityFunctions.DiffDays(e.DOJ, today) == 5)).Select(e =>
+                        new
+                        {
+                            employeename = e.EmployeeName,
+                        //employeemail = e.EmployeeMailId
+                    }).ToList();
 
-                    //foreach(var obj in trigger)
-                    //{
-                    //    string names = obj.employeename;
-                    //    //string mails = obj.employeemail;
-                    //    EmailGeneration.SendNewJoinersMail(names, MailId);
-                    //}
+                    foreach (var obj in trigger)
+                    {
+                        string names = obj.employeename;
+                        //string mails = obj.employeemail;
+                        EmailGeneration.SendNewJoinersMail(names, MailId);
+                    }
 
                     return Ok(listofEmployees.ToList());
                 }
