@@ -1,4 +1,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<!--<script type="text/javascript" src="bower_components/angular-weather/src/angular-weather.js"></script>
+
+<script src="node_modules/angular-weather-widget/bundles/angular-weather-widget.umd.js"></script>-->
+
 <body>
 <div class="row" *ngIf ="userClaims">
   
@@ -25,7 +29,7 @@
     </div>
     
       <div class= "greeting-card">
-        <h5 class="greeting-msg">Welcome, to Project Allotment Portal !</h5>
+        <h5 class="greeting-msg">Welcome to Project Allotment Portal !</h5>
 
         <div [ngSwitch]="value">
           <div  *ngSwitchCase="'Good Morning'"><img class="greetingimage" src="../../assets/Morning.PNG" >
@@ -36,6 +40,8 @@
           </div> 
           <div *ngSwitchCase="'Good Evening'"><img class="greetingimage" src="../../assets/evening.PNG" >
             <h6 class="day">GOOD EVENING !</h6>
+            <!--<angular-weather city="Chennai"></angular-weather>-->
+
           </div> 
 
         </div>

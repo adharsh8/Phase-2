@@ -32,6 +32,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { RemoveemployeeComponent } from './removeemployee/removeemployee.component';
+import {MatBadgeModule} from '@angular/material/badge';
+//import { AngularWeatherWidgetModule, WeatherApiName } from 'angular-weather-widget';
+
 
 @NgModule({
   declarations: [
@@ -83,8 +86,14 @@ import { RemoveemployeeComponent } from './removeemployee/removeemployee.compone
     MatSnackBarModule,
     AvatarModule,
     MatTooltipModule,
-    MatMomentDateModule
-   
+    MatMomentDateModule,
+    MatBadgeModule,
+    /*AngularWeatherWidgetModule.forRoot({
+      key: OPEN_WEATHER_MAP_API_KEY,
+      name: WeatherApiName.OPEN_WEATHER_MAP,
+      baseUrl: 'http://api.openweathermap.org/data/2.5'
+    })*/
+    
   ],
   providers: [ AuthGuard,{
     provide: HTTP_INTERCEPTORS,

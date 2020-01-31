@@ -25,6 +25,7 @@
     "@angular/router": "~8.2.14",
     "@material/checkbox": "^4.0.0",
     "@types/hammerjs": "^2.0.36",
+    "angular-weather-widget": "^1.2.4",
     "canvasjs": "^1.8.3",
     "chart.js": "^2.9.3",
     "hammerjs": "^2.0.8",

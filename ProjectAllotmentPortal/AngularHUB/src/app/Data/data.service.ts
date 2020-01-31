@@ -134,6 +134,10 @@ export class DataService {
       return this.http.get(this.Url + 'GetStatusChart')
       .map(result => result);
     }
+    GetCountofEmployee(userid : string)
+    {
+      return this.http.get(this.Url + 'GetCountofEmployee/'+ userid);
+    }
     ChangeEndDate(id:number,enddate : Date)
     {
 

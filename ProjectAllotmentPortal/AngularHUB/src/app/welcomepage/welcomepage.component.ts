@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../Data/data.service';
+//import { WeatherSettings, TemperatureScale, ForecastMode, WeatherLayout } from 'angular-weather-widget';
+
+
 
 @Component({
   selector: 'app-welcomepage',
   templateUrl: './welcomepage.component.html',
-  styleUrls: ['./welcomepage.component.css']
+  styleUrls: ['./welcomepage.component.css'],
+  //template: '<weather-widget [settings]="settings"></weather-widget>'
 })
 export class WelcomepageComponent implements OnInit {
   userClaims: any;
@@ -52,5 +56,21 @@ export class WelcomepageComponent implements OnInit {
     this.dataservice.sendmessage(userdetail);
     this.dataservice.Streamprefer(userdetail);
   }
+  /*settings: WeatherSettings = {
+    location: {
+      cityName: 'Szczecin'
+    },
+    backgroundColor: '#347c57',
+    color: '#ffffff',
+    width: '300px',
+    height: 'auto',
+    showWind: false,
+    scale: TemperatureScale.CELCIUS,
+    forecastMode: ForecastMode.DETAILED,
+    showDetails: false,
+    showForecast: true,
+    layout: WeatherLayout.WIDE,
+    language: 'en'
+  };*/
 
 }

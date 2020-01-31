@@ -12,17 +12,20 @@
             <i id="icons2" class="small material-icons"  (click)="Logout()">person</i>            
     </div> -->
 
-    <div [ngSwitch]="username" >
+    <div [ngSwitch]="username" class="avatar" >
         <div *ngSwitchCase="'Srivatsan'">
-            <ngx-avatar src="../../../assets/Srivathsan-Santhanam.jpg" size="40"[matMenuTriggerFor]="beforeMenu">
-            </ngx-avatar>
+            <mat-icon [matBadge]="count" matBadgeColor="warn" matBadgeOverlap="false"><ngx-avatar  src="../../../assets/Srivathsan-Santhanam.jpg" size="40"[matMenuTriggerFor]="beforeMenu">
+            </ngx-avatar></mat-icon>
         </div>
         <div *ngSwitchCase="'Srinithi'">
-            <ngx-avatar src="../../../assets/srinidhi.jpg" size="40" [matMenuTriggerFor]="beforeMenu">
-            </ngx-avatar>
+            <mat-icon [matBadge]="count" matBadgeColor="warn" matBadgeOverlap="false"><ngx-avatar  src="../../../assets/srinidhi.jpg" size="40" [matMenuTriggerFor]="beforeMenu">
+            </ngx-avatar></mat-icon>
         </div>
         <div *ngSwitchDefault>
-            <ngx-avatar src="../../../assets/sugitra.jpg" size="40"  [matMenuTriggerFor]="beforeMenu" ></ngx-avatar>
+            <mat-icon [matBadge]="count" matBadgeColor="warn" matBadgeOverlap="false"><ngx-avatar src="../../../assets/sugitra.jpg" size="40"  [matMenuTriggerFor]="beforeMenu" >
+            </ngx-avatar></mat-icon>
+           
+          
         </div>
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="drop-btn">
             <button mat-menu-item><a class="btns" href='https://www.google.com/intl/en-GB/gmail/about/#'>My Account</a></button>

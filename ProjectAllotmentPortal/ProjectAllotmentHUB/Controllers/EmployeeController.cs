@@ -73,6 +73,65 @@ namespace ProjectAllotmentHUB.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet]
+        [Route ("api/GetCountofEmployee/{id=id}")]
+        public IHttpActionResult GetcountofEmployee(string id)
+        {
+            try
+            {
+                using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
+                {
+                    var emp = entity.Streams.FirstOrDefault(e => e.Username == id);
+                    
+                    if(emp.Username == "P001")
+                    { 
+                    var BadgeCount = (from p in entity.Employees.Where(p => p.StatusInfo == "Training").GroupBy(p => p.StatusInfo)
+                                       select new
+                                       {
+                                           TotalPeople = p.Count(),
+                                           p.FirstOrDefault().EmployeeId,
+                                       }).ToList();
+
+                    return Ok(BadgeCount);
+                    }
+                    else if(emp.Username == "P002")
+                    {
+                        var BadgeCount = (from p in entity.EmployeeStreams.Where(p => p.Employee.StatusInfo != "Deployed" 
+                                          && p.Stream.StreamName == "DotNet")
+                                          .GroupBy(p => p.Employee.StatusInfo != "Deployed")
+                                          select new
+                                          {
+                                              TotalPeople = p.Count(),
+                                              p.FirstOrDefault().Employee.EmployeeId,
+                                          }).ToList();
+                    return Ok(BadgeCount);
+                       
+                    }
+                    else if (emp.Username == "P003")
+                    {
+                        var BadgeCount = (from p in entity.EmployeeStreams.Where(p => p.Employee.StatusInfo != "Deployed"
+                                          && p.Stream.StreamName == "EDM")
+                                          .GroupBy(p => p.Employee.StatusInfo != "Deployed")
+                                          select new
+                                          {
+                                              TotalPeople = p.Count(),
+                                              p.FirstOrDefault().Employee.EmployeeId,
+                                          }).ToList();
+                        return Ok(BadgeCount);
+
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
         [HttpPost]
         [Route("api/PostEmployee")]
         [ResponseType(typeof(Employee))]

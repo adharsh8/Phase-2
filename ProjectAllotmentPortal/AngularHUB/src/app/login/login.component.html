@@ -21,7 +21,7 @@
                </div>
                <div class="row">
                   <div class="input-field col s12">
-                    <i class="material-icons prefix" (click)="password()">{{show ? 'visibility_off' : 'visibility'}}</i>
+                    <i class="material-icons prefix" id="icon" (click)="password()">{{show ? 'visibility_off' : 'visibility'}}</i>
                     <!--<mat-icon matSuffix (click)="password()">{{show ? 'visibility_off' : 'visibility'}}</mat-icon>-->
                     <input [type]="show ? 'password' : 'text'" #Password ngModel name="Password" placeholder="Password" required>
                     

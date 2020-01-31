@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/Data/data.service';
 import { MatDialog } from '@angular/material';
 import { ResetpasswordComponent } from 'src/app/resetpassword/resetpassword.component';
-
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @Component({
@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
   displaydept : any;
   username : string;
   userId : string;
+  data : any;
+  count : number;
 
   constructor(private route : Router,private dataservice : DataService,public dialog: MatDialog) { }
 
@@ -32,6 +34,14 @@ export class HeaderComponent implements OnInit {
     )
 
     this.userLogin = localStorage.getItem('User-Name');
+
+    this.dataservice.GetCountofEmployee(this.userId).subscribe(
+      result => {this.data = result;
+        console.log(this.data);
+        this.count = this.data[0].TotalPeople;
+        console.log(this.count);
+
+      });
   }
   Logout()
   {

@@ -35,5 +35,12 @@
 {
     text-decoration: none;
     color: black;
+    
+}
+.avatar
+{
+    right: 1em;
+    position: relative;
+    top:0.3em;
 }
 
