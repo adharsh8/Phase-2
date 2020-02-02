@@ -138,6 +138,10 @@ export class DataService {
     {
       return this.http.get(this.Url + 'GetCountofEmployee/'+ userid);
     }
+    Notification(userId : string)
+    {
+      return this.http.get(this.Url +"notifications/"+ userId);
+    }
     ChangeEndDate(id:number,enddate : Date)
     {
 

@@ -4,6 +4,8 @@ import { DataService } from 'src/app/Data/data.service';
 import { MatDialog } from '@angular/material';
 import { ResetpasswordComponent } from 'src/app/resetpassword/resetpassword.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ThemeService } from 'src/app/theme.service';
 
 
 @Component({
@@ -19,8 +21,23 @@ export class HeaderComponent implements OnInit {
   userId : string;
   data : any;
   count : number;
+  notifyForm : any;
+  notify : any;
+  darkTheme =  new FormControl(false);
+  show : boolean = true;
+  
 
-  constructor(private route : Router,private dataservice : DataService,public dialog: MatDialog) { }
+  constructor(private route : Router,private dataservice : DataService,public dialog: MatDialog,
+    private form: FormBuilder,private themeService: ThemeService) {
+      this.darkTheme.valueChanges.subscribe(value => {
+        if (value) {
+          console.log(this.darkTheme.value);
+          this.themeService.toggleDark();
+        } else {
+          this.themeService.toggleLight();
+        }
+      });
+     }
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
@@ -42,6 +59,17 @@ export class HeaderComponent implements OnInit {
         console.log(this.count);
 
       });
+
+      this.notifyForm = this.form.group({
+        notification: ['', Validators.required]
+      });
+      
+      this.dataservice.Notification(this.userId).subscribe(
+        result =>{
+          this.notify = result;
+        }
+      );
+
   }
   Logout()
   {
@@ -61,5 +89,14 @@ export class HeaderComponent implements OnInit {
          },err=>{  
            console.log(err);  
          });
+  }
+  navigate()
+  {
+    this.route.navigate(['project']);
+  }
+  changetheme()
+  {
+    this.show = false;
+    console.log(this.show);
   }
 }

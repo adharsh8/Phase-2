@@ -37,10 +37,32 @@
     color: black;
     
 }
+.notify
+{
+    position: relative;
+    right: 2em;
+    top: 1em;
+    
+    
+}
 .avatar
 {
-    right: 1em;
     position: relative;
-    top:0.3em;
+    bottom: 1em;
+    cursor: pointer;
 }
+.dropdown
+{
+    right:2.2em;
+    position: relative;
+    font-size: 15px;
+    color: #3f51b5;
+    top:0.2em;
 
+}
+.themeicon
+{
+    position: relative;
+    color: white;
+    top: 0.1em;
+}

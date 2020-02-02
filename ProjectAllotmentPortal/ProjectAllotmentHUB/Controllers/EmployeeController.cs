@@ -88,6 +88,7 @@ namespace ProjectAllotmentHUB.Controllers
                     var BadgeCount = (from p in entity.Employees.Where(p => p.StatusInfo == "Training").GroupBy(p => p.StatusInfo)
                                        select new
                                        {
+                                           
                                            TotalPeople = p.Count(),
                                            p.FirstOrDefault().EmployeeId,
                                        }).ToList();
@@ -119,6 +120,64 @@ namespace ProjectAllotmentHUB.Controllers
                                           }).ToList();
                         return Ok(BadgeCount);
 
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                LogFile.WriteLog(ex);
+                return BadRequest();
+            }
+        }
+        [HttpGet]
+        [Route ("api/notifications/{id=id}")]
+        public IHttpActionResult Notification(string id)
+        {
+            try
+            {
+               using(ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
+                {
+                    var employeelist = entity.Streams.FirstOrDefault(e => e.Username == id);
+
+                    if(employeelist.Username == "P001")
+                    {
+                        var listofEmployee = (from emp in entity.Employees
+                                    where (emp.StatusInfo == "Training")
+                                    select new
+                                    {
+                                        emp.EmployeeName,
+                                        emp.StatusInfo
+                                    }).ToList();
+                        return Ok(listofEmployee);
+                    }
+                    else if(employeelist.Username == "P002")
+                    {
+                        var listofEmployee = (from emp in entity.EmployeeStreams
+                                              where ((emp.Employee.StatusInfo == "Waiting for Allocation" ||
+                                              emp.Employee.StatusInfo == "Allocated") && emp.Stream.StreamName == "DotNet")
+                                              select new
+                                              {
+                                                  emp.Employee.EmployeeName,
+                                                  emp.Employee.StatusInfo
+                                              }).ToList();
+                        return Ok(listofEmployee);
+
+                    }
+                    else if(employeelist.Username == "P003")
+                    {
+                        var listofEmployee = (from emp in entity.EmployeeStreams
+                                              where ((emp.Employee.StatusInfo == "Waiting for Allocation" ||
+                                              emp.Employee.StatusInfo == "Allocated") && emp.Stream.StreamName == "EDM")
+                                              select new
+                                              {
+                                                  emp.Employee.EmployeeName,
+                                                  emp.Employee.StatusInfo
+                                              }).ToList();
+                        return Ok(listofEmployee);
                     }
                     else
                     {

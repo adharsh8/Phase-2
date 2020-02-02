@@ -73,7 +73,8 @@ chart(projchart : string)
   localStorage.setItem('chartType',projchart);
   const dialogRef = this.dialog.open(ChartComponent, {
     width: '850px',
-    height : '550px'
+    height : '550px',
+    
 });
 dialogRef.afterClosed().subscribe(result => {
   console.log("Modal closed");

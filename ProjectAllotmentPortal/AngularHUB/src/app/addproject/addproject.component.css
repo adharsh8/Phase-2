@@ -11,6 +11,8 @@
     top: 1.5em; 
     margin-top: 0em;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5); 
+    background-color: var(--primary-color);
+    color: var(--text-color);
   }
 #goback
 {
@@ -18,6 +20,7 @@
     position: relative;
     right: 16em;
     bottom: 3em;
+    color: var(--text-color);
 }
 
 .header
@@ -27,6 +30,10 @@
     position: relative;
     font-weight: bold;
     
+}
+.label
+{
+    color: var(--text-color);
 }
 .table
 {
@@ -52,6 +59,7 @@
 .fromDate
 {
     left: 11em;
+    
 }
 .toDate
 {

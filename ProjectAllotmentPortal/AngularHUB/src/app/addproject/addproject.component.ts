@@ -54,6 +54,7 @@ export class AddprojectComponent implements OnInit {
     this.datum.GetProjectName(this.departmentname).subscribe(
       data =>{
         this.ProjectDetails = data;
+        console.log(this.ProjectDetails);
       }
     );
     this.datum.GetRoleType().subscribe(

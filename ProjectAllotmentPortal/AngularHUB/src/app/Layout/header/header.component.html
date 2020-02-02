@@ -6,33 +6,56 @@
         <div>
             <h2 id="headr">PROJECT ALLOTMENT PORTAL</h2>
         </div>
-  <!--  <div>
+    <div>
             
-            <i id="icons1" class="small material-icons" >mail</i>
-            <i id="icons2" class="small material-icons"  (click)="Logout()">person</i>            
-    </div> -->
-
-    <div [ngSwitch]="username" class="avatar" >
+            <mat-slide-toggle [formControl]="darkTheme">
+                <mat-icon class="themeicon" [color] ="primary" (click)="changetheme()">{{show ? 'wb_sunny' : 'nights_stay'}}</mat-icon>
+            </mat-slide-toggle>           
+        
+    </div> 
+    <form [formGroup]="notifyForm" class="notifyform" autocomplete="off">
+                 
+    <div [ngSwitch]="username"  >
         <div *ngSwitchCase="'Srivatsan'">
-            <mat-icon [matBadge]="count" matBadgeColor="warn" matBadgeOverlap="false"><ngx-avatar  src="../../../assets/Srivathsan-Santhanam.jpg" size="40"[matMenuTriggerFor]="beforeMenu">
-            </ngx-avatar></mat-icon>
+            <mat-icon class="notify" [matBadge]="count" matBadgeColor="warn" >notifications
+                       <mat-select class="dropdown" formControlName="notification">
+                    <mat-option *ngFor="let alert of notify" [value]="alert" (click)="navigate()">{{alert.EmployeeName}} - {{alert.StatusInfo}}</mat-option>
+                    
+                </mat-select>
+            </mat-icon>
+            <ngx-avatar class="avatar" src="../../../assets/Srivathsan-Santhanam.jpg" size="40"[matMenuTriggerFor]="beforeMenu">
+            </ngx-avatar>
         </div>
         <div *ngSwitchCase="'Srinithi'">
-            <mat-icon [matBadge]="count" matBadgeColor="warn" matBadgeOverlap="false"><ngx-avatar  src="../../../assets/srinidhi.jpg" size="40" [matMenuTriggerFor]="beforeMenu">
-            </ngx-avatar></mat-icon>
+            <mat-icon class="notify" [matBadge]="count" matBadgeColor="warn">notifications
+                <mat-select class="dropdown" formControlName="notification">
+                    <mat-option *ngFor="let alert of notify" [value]="alert" (click)="navigate()">{{alert.EmployeeName}} - {{alert.StatusInfo}}</mat-option>
+                    
+                </mat-select>
+            </mat-icon>
+            <ngx-avatar class="avatar" src="../../../assets/srinidhi.jpg" size="40" [matMenuTriggerFor]="beforeMenu">
+            </ngx-avatar>
         </div>
         <div *ngSwitchDefault>
-            <mat-icon [matBadge]="count" matBadgeColor="warn" matBadgeOverlap="false"><ngx-avatar src="../../../assets/sugitra.jpg" size="40"  [matMenuTriggerFor]="beforeMenu" >
-            </ngx-avatar></mat-icon>
-           
-          
+            <mat-icon class="notify" [matBadge]="count" matBadgeColor="warn" >notifications
+                <mat-select class="dropdown" formControlName="notification">
+                    <mat-option *ngFor="let alert of notify" [value]="alert" (click)="navigate()">{{alert.EmployeeName}} - {{alert.StatusInfo}}</mat-option>
+                    
+                </mat-select>
+            </mat-icon>
+            <ngx-avatar class="avatar" src="../../../assets/sugitra.jpg" size="40"  [matMenuTriggerFor]="beforeMenu" >
+            </ngx-avatar>
+                    
         </div>
+        
+
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="drop-btn">
             <button mat-menu-item><a class="btns" href='https://www.google.com/intl/en-GB/gmail/about/#'>My Account</a></button>
             <button mat-menu-item class="btns" (click)="ChangePassword()">Change Password</button>
             <button mat-menu-item class="btns" (click)="Logout()">Log Out</button>
           </mat-menu>
     </div>
+</form>
     </mat-toolbar-row>
 </mat-toolbar>
 

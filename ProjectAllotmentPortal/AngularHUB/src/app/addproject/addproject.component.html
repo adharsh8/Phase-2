@@ -20,7 +20,7 @@
                          <mat-select required formControlName="ProjectName" [ngClass]="displayFieldCss('ProjectName')" >
                               <mat-option  *ngFor="let Proj of ProjectDetails" [value]="Proj">{{ Proj.projectname }}</mat-option>
                          </mat-select>
-                         <mat-label >PROJECT NAME</mat-label>
+                         <mat-label class="label" >PROJECT NAME</mat-label>
                        </mat-form-field>
                        <app-field-error-display [displayError]="isFieldValid('ProjectName')"  errorMsg="Please choose the Project Name">
                     </app-field-error-display>
@@ -31,7 +31,7 @@
                          <mat-select required formControlName="Roletype" [ngClass]="displayFieldCss('Roletype')">
                               <mat-option *ngFor="let role of RoleDetails" [value]="role">{{ role.rolesname }}</mat-option>
                          </mat-select>
-                         <mat-label>ROLE TYPE</mat-label>      
+                         <mat-label class="label">ROLE TYPE</mat-label>      
                        </mat-form-field>
                        <app-field-error-display [displayError]="isFieldValid('Roletype')"  errorMsg="Please choose the Role Type">
                     </app-field-error-display>
@@ -44,7 +44,7 @@
                             <mat-label class="name"></mat-label> 
                             
                               <mat-form-field  class="fromDate" appearance="outline">
-                                     <input matInput [matDatepicker]="picker1" placeholder="From Date"  formControlName="fromDate" [ngClass]="displayFieldCss('fromDate')">
+                                     <input matInput [matDatepicker]="picker1"  placeholder="From Date"  formControlName="fromDate" [ngClass]="displayFieldCss('fromDate')">
                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                     <mat-datepicker #picker1></mat-datepicker>
                               </mat-form-field>
@@ -57,7 +57,7 @@
                            
                             
                             <mat-form-field  class="toDate" appearance="outline">
-                                   <input matInput [matDatepicker]="picker2" placeholder="To Date"  formControlName="toDate" [ngClass]="displayFieldCss('toDate')">
+                                   <input matInput [matDatepicker]="picker2"  placeholder="To Date"  formControlName="toDate" [ngClass]="displayFieldCss('toDate')">
                                   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                                   <mat-datepicker #picker2></mat-datepicker>
                             </mat-form-field>
@@ -92,14 +92,14 @@
                     <td class="proj2">
                          <mat-form-field appearance="outline" >     
                            <input matInput [readonly]="true" placeholder="Project Name" value="{{prjname}}">
-                            <mat-label >Project Name</mat-label>
+                            <mat-label class="label">Project Name</mat-label>
                           </mat-form-field> 
                     </td>
 
                     <td class="role2">
                         <mat-form-field  appearance="outline" >     
                             <input matInput [readonly]="true" placeholder="Role Name" value="{{rolename}}">
-                             <mat-label >Role Name</mat-label>
+                             <mat-label class="label">Role Name</mat-label>
                            </mat-form-field> 
                     </td>
                   
@@ -109,7 +109,7 @@
                     <td class="fromdate2">
                         <mat-form-field  appearance="outline" >     
                             <input matInput [readonly]="true" placeholder="From Date" value="{{begindate | date:'mediumDate'}}">
-                             <mat-label >From Date</mat-label>
+                             <mat-label class="label" >From Date</mat-label>
                            </mat-form-field> 
                           
                     </td>

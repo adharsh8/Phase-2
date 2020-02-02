@@ -2,10 +2,23 @@
 #goback
 {
     cursor: pointer;
+    color: var(--text-color);
 }
 .title
 {
     position: relative;
     bottom:1.3em;
     text-align: center;
+    color: var(--text-color);
+}
+.content
+{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+#canvas
+{
+position: relative;
+bottom: 1em;
+color: var(--text-color);
 }

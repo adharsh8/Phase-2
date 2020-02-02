@@ -12,7 +12,10 @@ export class NavbarComponent implements OnInit {
   data : any;
   username : string;
 
-  constructor(private dataservice : DataService) { }
+
+  constructor(private dataservice : DataService) {
+
+   }
 
   ngOnInit() {
     this.dataservice.UImsg$.subscribe(
