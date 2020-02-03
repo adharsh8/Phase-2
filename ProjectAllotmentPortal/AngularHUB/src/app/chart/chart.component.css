@@ -22,3 +22,7 @@ position: relative;
 bottom: 1em;
 color: var(--text-color);
 }
+.mat-dialog-container
+{
+    background-color:  var(--primary-color) !important;
+}

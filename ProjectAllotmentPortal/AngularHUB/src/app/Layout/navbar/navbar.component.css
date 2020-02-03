@@ -1,10 +1,10 @@
 .bg
 {
     background-color: #bdbdbd;   
-    height: 7vh;
     position: relative;
-    
+    height: 7vh;
 }
+
 a
 {
     color: black;

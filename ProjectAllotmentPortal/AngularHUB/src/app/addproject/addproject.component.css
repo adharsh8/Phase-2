@@ -8,7 +8,7 @@
     position: relative;
     width: 60%;
     left: 16em;
-    top: 1.5em; 
+    top: 3em; 
     margin-top: 0em;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5); 
     background-color: var(--primary-color);
@@ -89,3 +89,26 @@
     position: relative;
     left: 22em;
 }
+.mat-form-field-label{
+    color: var(--text-color) !important;
+
+}
+.mat-form-field-underline{
+    background-color: var(--background-color) !important;
+}
+.mat-datepicker-toggle {
+    color: var(--text-color) !important;
+ background-color: var(--background-color) !important;
+}
+
+::placeholder{
+    color: var(--text-color) !important;
+}
+.textarea{
+    color: var(--text-color) !important;
+}
+.mat-select-value,input.mat-input-element,textarea.mat-input-element{
+    color: var(--text-color) !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-flex{
+    color: var(--text-color) !important;}

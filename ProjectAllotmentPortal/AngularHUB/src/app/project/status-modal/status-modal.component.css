@@ -3,7 +3,12 @@ h5
     position: relative;
     text-align: center;
     font-weight: bolder;
-    color: var(--text-color);
+    
+}
+.mat-dialog-container
+{
+    
+    position: relative;
 }
 .content
 {
@@ -11,11 +16,11 @@ h5
     position: relative;
     padding: 1em;
     width: 18em;
-    color: var(--text-color);
+    
    
 }
 .label{
-    color: var(--text-color);
+    
     font-size: 15PX;
 }
 .button1
@@ -34,6 +39,4 @@ h5
 
 body{
     overflow: hidden;
-    background-color: var(--primary-color);
-    color: var(--text-color);
 }

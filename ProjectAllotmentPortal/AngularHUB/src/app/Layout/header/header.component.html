@@ -8,8 +8,8 @@
         </div>
     <div>
             
-            <mat-slide-toggle [formControl]="darkTheme">
-                <mat-icon class="themeicon" [color] ="primary" (click)="changetheme()">{{show ? 'wb_sunny' : 'nights_stay'}}</mat-icon>
+            <mat-slide-toggle [formControl]="darkTheme" class="toggle" (click)="changetheme()" color = "warn">
+                <mat-icon class="themeicon"  >{{show ? 'wb_sunny' : 'nights_stay'}}</mat-icon>
             </mat-slide-toggle>           
         
     </div> 
@@ -50,7 +50,7 @@
         
 
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="drop-btn">
-            <button mat-menu-item><a class="btns" href='https://www.google.com/intl/en-GB/gmail/about/#'>My Account</a></button>
+            <button mat-menu-item class="btns"><a class="href" href='https://www.google.com/intl/en-GB/gmail/about/#'>My Account</a></button>
             <button mat-menu-item class="btns" (click)="ChangePassword()">Change Password</button>
             <button mat-menu-item class="btns" (click)="Logout()">Log Out</button>
           </mat-menu>

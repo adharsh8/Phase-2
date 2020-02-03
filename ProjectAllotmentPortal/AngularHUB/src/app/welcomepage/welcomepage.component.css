@@ -4,16 +4,16 @@
     position: relative;
     width: 60%;
     left: 14em;
-    top: 2em;    
+    top: 2.75em;    
 }
 .card
 {
-    left: 7em;
+    left: 8em;
     bottom: 0.6em;    
     text-align: center;
     position: relative;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5);
-    background-color: var(--background-color);
+    background-color: var(--primary-color);
     color: var(--text-color);
 
 }
@@ -39,11 +39,11 @@ h6{
 {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 12), 0 5px 5px 0 rgba(50, 51, 74, 5);
     width:40%;
-    right: 14em;
+    right: 13em;
     position: relative;
     text-align: center;
     height: 400px;
-    background-color: var(--background-color);
+    background-color: var(--primary-color);
     color: var(--text-color);
 }
 .greeting-msg

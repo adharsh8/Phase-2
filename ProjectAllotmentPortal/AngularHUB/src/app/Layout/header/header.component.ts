@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   notify : any;
   darkTheme =  new FormControl(false);
   show : boolean = true;
+  color = 'primary';
   
 
   constructor(private route : Router,private dataservice : DataService,public dialog: MatDialog,
@@ -96,7 +97,7 @@ export class HeaderComponent implements OnInit {
   }
   changetheme()
   {
-    this.show = false;
-    console.log(this.show);
+    this.show = !this.show;
+   
   }
 }

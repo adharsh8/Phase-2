@@ -73,15 +73,15 @@ export class ChartComponent implements OnInit {
         type: 'pie',
         exportEnabled: true,
         animationEnabled: true,
+        easing :'easeInQuad',
         data:{
           labels : this.Name,
           datasets :[
             {
               data : this.Total,
-              borderColor: '#3cba9f',  
+              borderColor: '#000000',  
                 backgroundColor: [  
-                  "#3cb371",  
-                  "#0000FF",  
+                  "#00acc1",  
                   "#9966FF",  
                   "#4C4CFF",  
                   "#00FFFF",  
@@ -130,18 +130,18 @@ export class ChartComponent implements OnInit {
         type: 'pie',
         exportEnabled: true,
         animationEnabled: true,
+        
         data:{
           labels : this.Name2,
           datasets :[
             {
               data : this.Total2,
-              borderColor: '#3cba9f',  
-                backgroundColor: [  
-                  "#3cb371",  
+              borderColor: '#000000',  
+                backgroundColor: [   
                   "#0000FF",  
                   "#9966FF",  
                   "#4C4CFF",  
-                  "#00FFFF",  
+                  "#00acc1",  
                   "#f990a7",  
                   "#aad2ed",  
                   "#FF00FF",  
@@ -194,9 +194,9 @@ export class ChartComponent implements OnInit {
           datasets :[
             {
               data : this.Total1,
-              borderColor: '#757575 ',  
+              borderColor: '#000000 ',  
                 backgroundColor: [  
-                  "#2196f3",  
+                  "#00acc1",  
                   "#7e57c2",  
                   "#9966FF",  
                   "#4C4CFF",  

@@ -14,6 +14,9 @@
 {
     font-size: 27px;
     font-weight: 450;
+    position: relative;
+    text-align: center;
+    left: 4.5em;
     
 }
 #icons2
@@ -29,12 +32,14 @@
 }
 .btns:hover
 {
-    background-color:white;
+    background-color:#bdbdbd;
+   
 }
 .btns
 {
     text-decoration: none;
     color: black;
+    background-color: white;
     
 }
 .notify
@@ -65,4 +70,14 @@
     position: relative;
     color: white;
     top: 0.1em;
+}
+.href
+{
+    color: black;
+    text-decoration: none;
+}
+.toggle
+{
+    position: relative;
+    left: 8em;
 }

@@ -3,13 +3,16 @@
     width: 100%;
     position: absolute;
     top:37.7em;
+    
   }
   .socialpng{
     padding: 1em;
     top: 1em;
     position: relative;
+    color: var(--text-color);
   }
   .rights{
     right: 1em;
     position: relative;
+    color:  black;
   }

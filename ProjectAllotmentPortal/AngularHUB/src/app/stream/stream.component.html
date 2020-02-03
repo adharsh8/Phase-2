@@ -7,8 +7,8 @@
   <button mat-menu-item (click)="chart('statusChart')" matTooltip="View Status chart" matTooltipPosition ="right">STATUS</button>
 </mat-menu>
 <mat-form-field class="filters" appearance="outline">
-  <mat-icon matSuffix>search</mat-icon>
-  <mat-label>Search</mat-label>
+  <mat-icon matSuffix  >search</mat-icon>
+  <mat-label class="labels" >Search</mat-label>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by Employee" autocomplete="off">
 </mat-form-field>
 <body>

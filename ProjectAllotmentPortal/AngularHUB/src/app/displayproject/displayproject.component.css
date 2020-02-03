@@ -5,7 +5,7 @@
   width: 90%;
   left: 5%;
   top:1em;
-  height: 425px;
+  height: 460px;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -19,7 +19,7 @@ table{
 {
   position: relative;
   overflow: auto;
-  max-height: 310px;
+  max-height: 340px;
 }
 
 .filters
@@ -70,7 +70,7 @@ table{
   color: black;
   background-color: #bdbdbd;
   text-align: center;
-  color: var(--text-color);
+  
 }
 .edit
 {
