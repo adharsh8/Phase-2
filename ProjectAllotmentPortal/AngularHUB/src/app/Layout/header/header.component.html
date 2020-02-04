@@ -39,7 +39,7 @@
         <div *ngSwitchDefault>
             <mat-icon class="notify" [matBadge]="count" matBadgeColor="warn" >notifications
                 <mat-select class="dropdown" formControlName="notification">
-                    <mat-option *ngFor="let alert of notify" [value]="alert" (click)="navigate()">{{alert.EmployeeName}} - {{alert.StatusInfo}}</mat-option>
+                    <mat-option *ngFor="let alert of notify" [value]="alert" (click)="navigatestream()">{{alert.EmployeeName}} - {{alert.StatusInfo}}</mat-option>
                     
                 </mat-select>
             </mat-icon>
@@ -50,9 +50,9 @@
         
 
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="drop-btn">
-            <button mat-menu-item class="btns"><a class="href" href='https://www.google.com/intl/en-GB/gmail/about/#'>My Account</a></button>
-            <button mat-menu-item class="btns" (click)="ChangePassword()">Change Password</button>
-            <button mat-menu-item class="btns" (click)="Logout()">Log Out</button>
+            <button mat-menu-item class="btns"><mat-icon>email</mat-icon><a class="href" href='https://www.google.com/intl/en-GB/gmail/about/#'>My Account</a></button>
+            <button mat-menu-item class="btns" (click)="ChangePassword()"><mat-icon>lock</mat-icon>Change Password</button>
+            <button mat-menu-item class="btns" (click)="Logout()"><mat-icon>exit_to_app</mat-icon>Log Out</button>
           </mat-menu>
     </div>
 </form>

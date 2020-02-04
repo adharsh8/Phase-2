@@ -55,7 +55,7 @@ export class RemoveemployeeComponent implements OnInit {
     });
     this.closeDialog();
 
-    this.router.navigate(['stream']);
-    this._document.defaultView.location.reload();
+    this.router.navigate(['welcomepage']);
+    //this._document.defaultView.location.reload();
   }
 }

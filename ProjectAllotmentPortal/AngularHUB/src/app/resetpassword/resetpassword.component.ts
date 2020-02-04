@@ -73,7 +73,7 @@ export class ResetpasswordComponent implements OnInit {
       results =>  this.openSnackBar(results.toString(),'Close'),
       error =>  this.openSnackBar(error.error.message,'Close')
     );
-      this.router.navigate(['welcomepage']);
+    this.dialogRef.close({event:'Cancel'});
     }
     else
     {

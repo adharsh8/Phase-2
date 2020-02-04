@@ -88,6 +88,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatTooltipModule,
     MatMomentDateModule,
     MatBadgeModule,
+    
     /*AngularWeatherWidgetModule.forRoot({
       key: OPEN_WEATHER_MAP_API_KEY,
       name: WeatherApiName.OPEN_WEATHER_MAP,

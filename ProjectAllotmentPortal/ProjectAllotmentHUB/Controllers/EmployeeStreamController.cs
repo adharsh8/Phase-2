@@ -54,7 +54,8 @@ namespace ProjectAllotmentHUB.Controllers
             {
                 using (ProjectAllocationDBEntities entity = new ProjectAllocationDBEntities())
                 {
-                    var streamchart = (from p in entity.EmployeeStreams.GroupBy(p => p.Stream.StreamName)
+                    var streamchart = (from p in entity.EmployeeStreams.Where(p => p.Employee.StatusInfo != "Removed")
+                                       .GroupBy(p => p.Stream.StreamName)
                                  select new
                                  {
                                      TotalPeople = p.Count(),

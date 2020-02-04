@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit {
   darkTheme =  new FormControl(false);
   show : boolean = true;
   color = 'primary';
+  mySubscription: any;
   
 
   constructor(private route : Router,private dataservice : DataService,public dialog: MatDialog,
@@ -38,7 +39,12 @@ export class HeaderComponent implements OnInit {
           this.themeService.toggleLight();
         }
       });
-     }
+
+      this.route.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      };
+  }
+
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
@@ -94,6 +100,10 @@ export class HeaderComponent implements OnInit {
   navigate()
   {
     this.route.navigate(['project']);
+  }
+  navigatestream()
+  {
+    this.route.navigate(['hrdashboard']);
   }
   changetheme()
   {

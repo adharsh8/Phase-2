@@ -97,9 +97,11 @@ namespace ProjectAllotmentHUB.Controllers
                     }
                     else if(emp.Username == "P002")
                     {
-                        var BadgeCount = (from p in entity.EmployeeStreams.Where(p => p.Employee.StatusInfo != "Deployed" 
+                        var BadgeCount = (from p in entity.EmployeeStreams.Where(p =>(p.Employee.StatusInfo == "Waiting for Allocation" ||
+                                              p.Employee.StatusInfo == "Allocated")
                                           && p.Stream.StreamName == "DotNet")
-                                          .GroupBy(p => p.Employee.StatusInfo != "Deployed")
+                                          .GroupBy(p => (p.Employee.StatusInfo == "Waiting for Allocation" ||
+                                              p.Employee.StatusInfo == "Allocated"))
                                           select new
                                           {
                                               TotalPeople = p.Count(),
@@ -110,9 +112,11 @@ namespace ProjectAllotmentHUB.Controllers
                     }
                     else if (emp.Username == "P003")
                     {
-                        var BadgeCount = (from p in entity.EmployeeStreams.Where(p => p.Employee.StatusInfo != "Deployed"
-                                          && p.Stream.StreamName == "EDM")
-                                          .GroupBy(p => p.Employee.StatusInfo != "Deployed")
+                        var BadgeCount = (from p in entity.EmployeeStreams.Where(p =>(p.Employee.StatusInfo == "Waiting for Allocation" ||
+                                              p.Employee.StatusInfo == "Allocated")
+                                          && p.Stream.StreamName == "EDM" )
+                                          .GroupBy(p =>(p.Employee.StatusInfo == "Waiting for Allocation" ||
+                                              p.Employee.StatusInfo == "Allocated"))
                                           select new
                                           {
                                               TotalPeople = p.Count(),
