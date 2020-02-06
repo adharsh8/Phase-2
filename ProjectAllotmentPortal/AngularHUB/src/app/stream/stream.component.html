@@ -49,7 +49,7 @@
 
     <ng-container matColumnDef="action">
       <th mat-header-cell class="tablehead" *matHeaderCellDef>Action</th>
-      <td mat-cell class="tablecontent" *matCellDef="let element"> <mat-icon (click)="openDialog('Remove',element)">
+      <td mat-cell class="tablecontent" *matCellDef="let element"> <mat-icon class="delete" (click)="openDialog('Remove',element)">
         delete_forever</mat-icon> </td>
     </ng-container>
 

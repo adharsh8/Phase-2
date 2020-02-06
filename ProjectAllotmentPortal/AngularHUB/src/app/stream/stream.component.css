@@ -64,4 +64,8 @@ table
 {
   color: var(--text-color);
 }
-
+.delete
+{
+  position: relative;
+  cursor: pointer;
+}
